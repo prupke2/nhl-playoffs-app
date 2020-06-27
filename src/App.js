@@ -13,10 +13,15 @@ class App extends Component {
   state = {
     eastTeams: eastTeams,
     westTeams: westTeams,
-    userInput: "",
-    count: 0,
-    currentTime: "",
-    showPersons: false
+    currentTime: ""
+  }
+
+  getTime = () => {
+    fetch('/time', {
+      method: 'GET',
+    })
+    .then(results => results.json())
+    .then(data => this.setState({currentTime: data.time}));
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -25,47 +30,15 @@ class App extends Component {
 
   render() {
 
-    // const charList = this.state.userInput.split('').map((char, index) => {
-    //   return <Char character={char} 
-    //   key={index} 
-    //   clicked={() => this.deleteCharHandler(index)} />;
-    // });
-
-    // let persons = null;
-
-    // if (this.state.showPersons) {
-    //   persons = (
-    //     <div>
-    //       <Persons 
-    //         persons = {this.state.persons}
-    //         clicked = {this.deletePersonHandler}
-    //         changed = {this.nameChangeHandler} />
-    //     </div>
-    //   );
-    // }
-
     return (
-        // <div className="App" style={appStyle}>
-        //   <Cockpit 
-        //   inputChanged = {this.inputChangedHandler}
-        //   userInput = {this.state.userInput}
-        //   showPersons = {this.state.showPersons}
-        //   clicked = {this.togglePersonsHandler}
-        //   currentTime = {this.state.currentTime}
-        //   getTime = {this.getTime}
-        //   />
-        //   <p>{persons}</p>
-        //   <p>{charList}</p>
-        // </div>
-
       <div className="App">
         <header className="App-header">
           <img src={nhlLogo} className="Nhl-logo" alt="NHL logo" />
-
-
         </header>
         <main>
           <PlayoffTree 
+            currentTime = {this.state.currentTime}
+            getTime = {this.getTime}
             eastTeams = {this.state.eastTeams}
             westTeams = {this.state.westTeams}>
           </PlayoffTree> 
