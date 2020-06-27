@@ -1,0 +1,64 @@
+{
+    "teams": [
+        {
+            "name": "Boston Bruins",
+            "logo": "/teamLogos/boston.png",
+            "seed": 1
+        },
+        {
+            "name": "Buffalo Sabres",
+            "logo": "/teamLogos/buffalo.png",
+            "seed": 2
+        },
+        {
+            "name": "Washington Capitals",
+            "logo": "/teamLogos/washington.png",
+            "seed": 3
+        },
+        {
+            "name": "Philadelphia Flyers",
+            "logo": "/teamLogos/philadelphia.png",
+            "seed": 4
+        },
+        {
+            "name": "Pittsburgh Penguins",
+            "logo": "/teamLogos/pittsburgh.png",
+            "seed": 5
+        },
+        {
+            "name": "Carolina Hurricanes",
+            "logo": "/teamLogos/carolina.png",
+            "seed": 6
+        },
+        {
+            "name": "New York Islanders",
+            "logo": "/teamLogos/new_york_islanders.png",
+            "seed": 7
+        },
+        {
+            "name": "Toronto Maple Leafs",
+            "logo": "/teamLogos/toronto.png",
+            "seed": 8
+        },
+        {
+            "name": "Columbus Blue Jackets",
+            "logo": "/teamLogos/columbus.png",
+            "seed": 9
+        },
+        {
+            "name": "Florida Panthers",
+            "logo": "/teamLogos/florida.png",
+            "seed": 10
+        },
+        {
+            "name": "New York Rangers",
+            "logo": "/teamLogos/new_york_rangers.png",
+            "seed": 11
+        },
+        {
+            "name": "Montreal Canadiens",
+            "logo": "/teamLogos/montreal.png",
+            "seed": 12
+        }
+    ]
+}

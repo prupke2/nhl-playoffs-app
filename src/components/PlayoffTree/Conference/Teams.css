@@ -1,0 +1,12 @@
+.teamWrapper {
+    margin: 4px;
+    padding: 4px;
+    display: flex;
+    justify-content: flex-start;
+    border: 2px solid var(--alt-bg);
+}
+
+.teamLogo {
+    height: 25px;
+    width: auto;
+}

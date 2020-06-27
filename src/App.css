@@ -1,20 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla&family=Rubik&display=swap');
+
 .App {
   text-align: center;
+  font-family: 'Karla', sans-serif;
+  /* font-family: 'Rubik', sans-serif; */
 }
 
-.App-logo {
-  height: 40vmin;
+:root {
+  --main-bg: #ffffff;
+  --alt-bg: #637282;
+  --main-text:  #1b2733;
+  --button: #ab7124;
+}
+
+/* 🎨 colors: #ffffff | #1b2733 | #637282 | #AB24A1 */
+
+.Nhl-logo {
+  height: 80px;
   pointer-events: none;
+  position: absolute;
+  left: 15px;
+  top: 10px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .Nhl-logo {
+    animation: nhl-logo-spin infinite 60s linear;
   }
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--alt-bg);
+  position: absolute;
+  height: 100px;
+  width: 100px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,11 +47,23 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
+@keyframes nhl-logo-spin {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  45% {
+    transform: rotate(5deg);
+  }
+  46% {
+    transform: rotate(175deg);
+  }
+  54% {
+    transform: rotate(185deg);
+  }
+  55% {
+    transform: rotate(355deg);
+  }
+  100% {
     transform: rotate(360deg);
   }
 }
