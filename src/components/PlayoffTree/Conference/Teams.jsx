@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 import './Teams.css';
 
 class Teams extends Component {
-
-    getTime = () => {
-        fetch('/time', {
-          method: 'GET',
-        })
-        .then(results => results.json())
-        .then(data => this.setState({currentTime: data.time}));
-    }
     
     render() {
         return this.props.teams.teams.map((team, index) => {
