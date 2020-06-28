@@ -34,7 +34,6 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={nhlLogo} className="Nhl-logo" alt="NHL logo" />
-          asdfasdf
         </header>
         <main>
           <PlayoffTree 
