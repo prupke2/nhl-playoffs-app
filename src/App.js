@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   getTime = () => {
-    fetch('/time', {
+    fetch('/api/time', {
       method: 'GET',
     })
     .then(results => results.json())
