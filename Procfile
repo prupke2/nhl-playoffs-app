@@ -1,2 +1,1 @@
-server: npm run gunicorn
-webpackdev: npm start
+web: gunicorn app:app
