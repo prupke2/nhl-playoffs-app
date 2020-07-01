@@ -1,34 +1,44 @@
-import React, { Component } from 'react';
-import Teams from './Conference/Teams';
-import './playoffTree.css';
+import React from 'react';
+import Teams from './Teams/Teams';
+import './PlayoffTree.css';
+import DragTeamsArea from './DragTeamsArea/DragTeamsArea';
 
 const PlayoffTree = (props) => {
 
-    // static getDerivedStateFromProps(props, state) {
-	// 	// console.log({props});
-	// 	return state;
-    // }
     
 		return (
-			<div className="PlayoffTree">
-				<section>
-					<Teams 
-						teams={props.eastTeams}>
-					</Teams>
+			<div className="PlayoffTreeWrapper">
+				<section className="ByeRound">
+					<ul>
+						<Teams 
+							teams={props.eastTeamByes}>
+						</Teams>
+					</ul>
+						<DragTeamsArea
+							conference="east">
+						</DragTeamsArea>
+					<ul>
+						<Teams
+							teams={props.westTeamByes}>
+						</Teams>
+					</ul>
+						<DragTeamsArea
+							conference="west">
+						</DragTeamsArea>			
 				</section>
-				<section style={{width: "150px;"}}>
-					<button
-						onClick={props.getTime}
-					>Get time
-					</button>
-					<p>Current Time: {props.currentTime}</p>
-				</section>	
-				<section>
-					<Teams 
-						teams={props.westTeams}>
-					</Teams>
+				
+				<section className="PlayoffTree">
+					<ul>
+						<Teams 
+							teams={props.eastTeamMatchups}>
+						</Teams>
+					</ul>	
+					<ul>
+						<Teams 
+							teams={props.westTeamMatchups}>
+						</Teams>
+					</ul>	
 				</section>
-
 			</div>
 		);
     

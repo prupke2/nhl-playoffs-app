@@ -1,18 +1,21 @@
 import React, { Component} from 'react';
-import nhlLogo from './assets/nhl.png';
+import hockeyIcon from './assets/hockey_icon_large.png';
 import PlayoffTree from './components/PlayoffTree/PlayoffTree';
-import eastTeams from './assets/eastTeams.json';
-import westTeams from './assets/westTeams.json';
+import eastTeamByes from './assets/eastTeamByes.json';
+import westTeamByes from './assets/westTeamByes.json';
+import eastTeamMatchups from './assets/eastTeamMatchups.json';
+import westTeamMatchups from './assets/westTeamMatchups.json';
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   state = {
-    eastTeams: eastTeams,
-    westTeams: westTeams,
+    eastTeamByes: eastTeamByes,
+    westTeamByes: westTeamByes,
+    eastTeamMatchups: eastTeamMatchups,
+    westTeamMatchups: westTeamMatchups,
+    eastTeamByeChoices: new Array(4).fill(null),
+    westTeamByeChoices: new Array(4).fill(null),
     currentTime: ""
   }
 
@@ -33,14 +36,17 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={nhlLogo} className="Nhl-logo" alt="NHL logo" />
+          <img src={hockeyIcon} className="logo" alt="Hockey logo" />
         </header>
         <main>
           <PlayoffTree 
             currentTime = {this.state.currentTime}
             getTime = {this.getTime}
-            eastTeams = {this.state.eastTeams}
-            westTeams = {this.state.westTeams}>
+            eastTeamByes = {this.state.eastTeamByes}
+            eastTeamMatchups = {this.state.eastTeamMatchups}
+            westTeamByes = {this.state.westTeamByes}
+            westTeamMatchups = {this.state.westTeamMatchups}
+            >
           </PlayoffTree> 
         </main> 
       </div>

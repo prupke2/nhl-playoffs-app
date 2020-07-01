@@ -1,0 +1,32 @@
+{
+    "teams": [
+        {
+            "name": "Boston Bruins",
+            "short": "BOS",
+            "logo": "/teamLogos/boston.png",
+            "seed": 1,
+            "bye": true
+        },
+        {
+            "name": "Buffalo Sabres",
+            "short": "BUF",
+            "logo": "/teamLogos/buffalo.png",
+            "seed": 2,
+            "bye": true
+        },
+        {
+            "name": "Washington Capitals",
+            "short": "WSH",
+            "logo": "/teamLogos/washington.png",
+            "seed": 3,
+            "bye": true
+        },
+        {
+            "name": "Philadelphia Flyers",
+            "short": "PHI",
+            "logo": "/teamLogos/philadelphia.png",
+            "seed": 4,
+            "bye": true
+        }
+    ]
+}

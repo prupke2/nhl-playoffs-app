@@ -1,0 +1,32 @@
+{
+    "teams": [
+        {
+            "name": "St. Louis Blues",
+            "short": "STL",
+            "logo": "/teamLogos/st_louis.png",
+            "seed": 1,
+            "bye": true
+        },
+        {
+            "name": "Colorado Avalanche",
+            "short": "COL",
+            "logo": "/teamLogos/colorado.png",
+            "seed": 2,
+            "bye": true
+        },
+        {
+            "name": "Vegas Golden Knights",
+            "short": "VGK",
+            "logo": "/teamLogos/vegas.png",
+            "seed": 3,
+            "bye": true
+        },
+        {
+            "name": "Dallas Stars",
+            "short": "DAL",
+            "logo": "/teamLogos/dallas.png",
+            "seed": 4,
+            "bye": true
+        }
+    ]
+}

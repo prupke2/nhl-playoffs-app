@@ -10,12 +10,19 @@
   --main-bg: #ffffff;
   --alt-bg: #637282;
   --main-text:  #1b2733;
+  --alt-text:  #ffffff;
   --button: #ab7124;
 }
 
 /* 🎨 colors: #ffffff | #1b2733 | #637282 | #AB24A1 */
 
-.Nhl-logo {
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
   height: 80px;
   pointer-events: none;
   position: absolute;
@@ -36,7 +43,7 @@
   width: 100px;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
