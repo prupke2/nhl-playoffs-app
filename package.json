@@ -40,7 +40,6 @@
   "devDependencies": {
     "fibers": "^5.0.0",
     "node-sass": "^4.14.1",
-    "react-beautiful-dnd": "^13.0.0",
     "sass": "^1.26.9",
     "typescript": "^3.9.6"
   }
