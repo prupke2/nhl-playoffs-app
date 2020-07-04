@@ -5,10 +5,30 @@
     justify-content: flex-start;
     border: 2px solid var(--alt-bg);
 }
-/* 
-.teamWrapper:nth-child(2n) {
-    margin-bottom: 30px;
-} */
+
+.Droppable {
+    position: absolute;
+}
+
+.EastByesWrapper .Droppable {
+    left: 120px;
+}
+
+.WestByesWrapper .Droppable {
+    right: 120px;
+}
+
+.Droppable .teamWrapper {
+    width: 80px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.Droppable .teamWrapper .watermark {
+    justify-content: center;
+    align-items: center;
+}
 
 .PlayoffTree .matchup:nth-child(2n) {
     margin-bottom: 30px;
@@ -20,12 +40,13 @@
 }
 
 .seed {
+    justify-content: center;
+    align-items: center;
     background-color: var(--alt-bg);
     border: 2px solid black;
     border-radius: 100%;
     text-align: center;
-    margin-top: 5px;
-    margin-right: 5px;
+    margin: 12px 5px;
     width: 20px;
     height: 20px;
     color: var(--alt-text);

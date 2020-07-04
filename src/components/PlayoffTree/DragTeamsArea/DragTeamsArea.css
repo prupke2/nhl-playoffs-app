@@ -9,6 +9,19 @@ ul li.west, ul li.east {
     background-color: floralwhite;
 }
 
+.LogoWrapper {
+    display: flex;
+    width: 120px;
+}
+
+.EastByesWrapper .LogoWrapper {
+    flex-direction: row;
+}
+
+.WestByesWrapper .LogoWrapper {
+    flex-direction: row-reverse;
+}
+
 .watermark {
     max-height: 100%;
     width: 100%;

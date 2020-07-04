@@ -1,47 +1,47 @@
-import React from 'react';
-import Teams from './Teams/Teams';
+import React, { Component } from 'react';
 import './PlayoffTree.css';
 import DragTeamsArea from './DragTeamsArea/DragTeamsArea';
 
-const PlayoffTree = (props) => {
+class PlayoffTree extends Component {
 
-    
+	render() {
 		return (
 			<div className="PlayoffTreeWrapper">
 				<section className="ByeRound">
-					<ul>
-						<Teams 
-							teams={props.eastTeamByes}>
-						</Teams>
-					</ul>
+					<div className="EastByesWrapper">
 						<DragTeamsArea
-							conference="east">
+							teams={this.props.eastTeamByes}
+							>
 						</DragTeamsArea>
-					<ul>
-						<Teams
-							teams={props.westTeamByes}>
-						</Teams>
-					</ul>
+					</div>
+					<div className="WestByesWrapper">
 						<DragTeamsArea
-							conference="west">
-						</DragTeamsArea>			
+							teams={this.props.westTeamByes}
+							>
+						</DragTeamsArea>
+					</div>
 				</section>
-				
-				<section className="PlayoffTree">
+				{/* <section className="PlayoffTree">
 					<ul>
 						<Teams 
-							teams={props.eastTeamMatchups}>
+							teams={this.props.eastTeamMatchups}>
 						</Teams>
 					</ul>	
 					<ul>
 						<Teams 
-							teams={props.westTeamMatchups}>
+							teams={this.props.westTeamMatchups}>
 						</Teams>
 					</ul>	
-				</section>
+				</section> */}
 			</div>
 		);
-    
+	}
+
+	// onDrop(data) {
+    //     console.log(data)
+    //     // => banana 
+    // }
+
 }
 
 export default React.memo(PlayoffTree);
