@@ -1,0 +1,138 @@
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 500px;
+    margin: auto;
+}
+
+.drag-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.drag-container > div {
+    margin-top: 25px;
+    position: absolute;
+    width: 200px;
+    height: auto;
+    top: 0;
+}
+
+.drag-east {
+    left: 200px;
+  }
+
+.drag-west {
+    right: 200px;
+}
+
+.header {
+    font-size: 1.7rem;
+    font-weight: 700;
+    font-variant: small-caps;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.small-header {
+    font-size: 1.2rem;
+}
+
+.drop-container {
+    border: 2px solid black;
+    border-radius: 2px;
+    height: 408px;
+    margin-top: 30px;
+}
+
+.drop-container .droppable {
+    position: relative;
+    width: 200px;
+    height: 95px;
+    right: 0;
+    top: 10;
+    border-bottom: 2px dotted black;
+    padding-bottom: 5px;
+}
+
+.drop-container .droppable:nth-child(4) {
+    border-bottom: none;
+}
+
+.LogoWrapper {
+    display: flex;
+    width: 100px;
+}
+
+.LogoWrapper div {
+    display: flex;
+}
+/* 
+.EastByesWrapper .LogoWrapper {
+    flex-direction: row;
+}
+
+.WestByesWrapper .LogoWrapper {
+    justify-content: flex-end;
+}
+
+.WestByesWrapper .LogoWrapper div {
+    flex-direction: row-reverse;
+} */
+
+.EligibleDrop {
+    background-color: var(--main-bg);
+    background-color: var(--eligible-drop);
+}
+
+.watermark {
+    max-height: 100%;
+    width: 100%;
+    opacity: 0.4;
+    text-align: center;
+    font-size: 2.3rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.team-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 5px;
+    background-color: var(--alt-bg);
+    border-radius: 1px;
+    text-align: left;
+    align-items: center;
+    color: var(--alt-text);
+    margin: 0 0 15px;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.seed {
+    border: 1px solid white;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    border-radius: 50px;
+    color: black;
+    background-color: white;
+    margin-right: 3px;
+}
+
+.team-logo {
+    max-height: 40px;
+    margin: auto;
+}

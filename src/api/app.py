@@ -10,6 +10,9 @@ def index():
     return app.send_static_file('index.html')
     
 @app.route('/api/time')
-
 def get_time():
     return {'time': time.time()}
+
+@app.route('/api/save_byes', methods=["GET", "POST"])
+def save_byes():
+    return {"byes": "byes"}

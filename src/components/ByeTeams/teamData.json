@@ -1,0 +1,204 @@
+{
+    "byeSpots": {
+        "teams": [
+            {
+                "id": "e1",
+                "conference": "east",
+                "type": "east",
+                "name": "Boston Bruins",
+                "short": "BOS",
+                "logo": "/teamLogos/boston.png",
+                "seed": 1,
+                "bye": true
+            },
+            {
+                "id": "e2",
+                "conference": "east",
+                "type": "east",
+                "name": "Buffalo Sabres",
+                "short": "BUF",
+                "logo": "/teamLogos/buffalo.png",
+                "seed": 2,
+                "bye": true
+            },
+            {
+                "id": "e3",
+                "conference": "east",
+                "type": "east",
+                "name": "Washington Capitals",
+                "short": "WSH",
+                "logo": "/teamLogos/washington.png",
+                "seed": 3,
+                "bye": true
+            },
+            {
+                "id": "e4",
+                "conference": "east",
+                "type": "east",
+                "name": "Philadelphia Flyers",
+                "short": "PHI",
+                "logo": "/teamLogos/philadelphia.png",
+                "seed": 4,
+                "bye": true
+            },
+            {
+                "id": "w1",
+                "conference": "west",
+                "type": "west",
+                "name": "St. Louis Blues",
+                "short": "STL",
+                "logo": "/teamLogos/st_louis.png",
+                "seed": 1,
+                "bye": true
+            },
+            {
+                "id": "w2",
+                "conference": "west",
+                "type": "west",
+                "name": "Colorado Avalanche",
+                "short": "COL",
+                "logo": "/teamLogos/colorado.png",
+                "seed": 2,
+                "bye": true
+            },
+            {
+                "id": "w3",
+                "conference": "west",
+                "type": "west",
+                "name": "Vegas Golden Knights",
+                "short": "VGK",
+                "logo": "/teamLogos/vegas.png",
+                "seed": 3,
+                "bye": true
+            },
+            {
+                "id": "w4",
+                "conference": "west",
+                "type": "west",
+                "name": "Dallas Stars",
+                "short": "DAL",
+                "logo": "/teamLogos/dallas.png",
+                "seed": 4,
+                "bye": true
+            }
+        ]
+    },
+    "matchups": {
+        "eastTeams": [
+            {
+                "name": "Pittsburgh Penguins",
+                "short": "PIT",
+                "logo": "/teamLogos/pittsburgh.png",
+                "seed": 5,
+                "bye": false
+            },      
+            {
+                "name": "Montreal Canadiens",
+                "short": "MTL",
+                "logo": "/teamLogos/montreal.png",
+                "seed": 12,
+                "bye": false
+            },          
+            {
+                "name": "Carolina Hurricanes",
+                "short": "CAR",
+                "logo": "/teamLogos/carolina.png",
+                "seed": 6,
+                "bye": false
+            },
+            {
+                "name": "New York Rangers",
+                "short": "NYR",
+                "logo": "/teamLogos/new_york_rangers.png",
+                "seed": 11,
+                "bye": false
+            },        
+            {
+                "name": "New York Islanders",
+                "short": "NYI",
+                "logo": "/teamLogos/new_york_islanders.png",
+                "seed": 7,
+                "bye": false
+            },
+            {
+                "name": "Florida Panthers",
+                "short": "FLA",
+                "logo": "/teamLogos/florida.png",
+                "seed": 10,
+                "bye": false
+            },        
+            {
+                "name": "Toronto Maple Leafs",
+                "short": "TOR",
+                "logo": "/teamLogos/toronto.png",
+                "seed": 8,
+                "bye": false
+            },
+            {
+                "name": "Columbus Blue Jackets",
+                "short": "CBJ",
+                "logo": "/teamLogos/columbus.png",
+                "seed": 9,
+                "bye": false
+            }
+        ],
+        "westTeams": [
+            {
+                "name": "Edmonton Oilers",
+                "short": "EDM",
+                "logo": "/teamLogos/edmonton.png",
+                "seed": 5,
+                "bye": false
+            },
+            {
+                "name": "Chicago Blackhalks",
+                "short": "CHI",
+                "logo": "/teamLogos/chicago.png",
+                "seed": 12,
+                "bye": false
+            },
+            {
+                "name": "Nashville Predators",
+                "short": "NSH",
+                "logo": "/teamLogos/nashville.png",
+                "seed": 6,
+                "bye": false
+            },
+            {
+                "name": "Arizona Coyotes",
+                "short": "ARI",
+                "logo": "/teamLogos/arizona.png",
+                "seed": 11,
+                "bye": false
+            },        
+            {
+                "name": "Vancouver Canucks",
+                "short": "VAN",
+                "logo": "/teamLogos/vancouver.png",
+                "seed": 7,
+                "bye": false
+            },
+            {
+                "name": "Minnesota Wild",
+                "short": "MIN",
+                "logo": "/teamLogos/minnesota.png",
+                "seed": 10,
+                "bye": false
+            },
+            {
+                "name": "Calgary Flames",
+                "short": "CGY",
+                "logo": "/teamLogos/calgary.png",
+                "seed": 8,
+                "bye": false
+            },
+            {
+                "name": "Winnipeg Jets",
+                "short": "WPG",
+                "logo": "/teamLogos/winnipeg.png",
+                "seed": 9,
+                "bye": false
+            }
+        ]
+    }
+}
