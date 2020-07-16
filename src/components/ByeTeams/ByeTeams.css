@@ -6,11 +6,23 @@ section {
     margin: auto;
 }
 
+h3 {
+    margin-top: 90px;
+}
+
+.drag-container h3.header {
+    margin-top: 90px;
+}
+
 .drag-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+
+.drag-container .team-wrapper, .droppable .team-wrapper {
+    cursor: grab;
 }
 
 .drag-container > div {
@@ -21,12 +33,12 @@ section {
     top: 0;
 }
 
-.drag-east {
-    left: 200px;
-  }
-
 .drag-west {
-    right: 200px;
+    left: 10vw;
+}
+
+.drag-east {
+    right: 10vw;
 }
 
 .header {
@@ -66,42 +78,6 @@ section {
 
 .drop-container .droppable:nth-child(4) {
     border-bottom: none;
-}
-
-.LogoWrapper {
-    display: flex;
-    width: 100px;
-}
-
-.LogoWrapper div {
-    display: flex;
-}
-/* 
-.EastByesWrapper .LogoWrapper {
-    flex-direction: row;
-}
-
-.WestByesWrapper .LogoWrapper {
-    justify-content: flex-end;
-}
-
-.WestByesWrapper .LogoWrapper div {
-    flex-direction: row-reverse;
-} */
-
-.EligibleDrop {
-    background-color: var(--main-bg);
-    background-color: var(--eligible-drop);
-}
-
-.watermark {
-    max-height: 100%;
-    width: 100%;
-    opacity: 0.4;
-    text-align: center;
-    font-size: 2.3rem;
-    font-weight: bold;
-    margin: 0;
 }
 
 .team-wrapper {

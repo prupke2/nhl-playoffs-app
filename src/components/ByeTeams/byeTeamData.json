@@ -1,0 +1,70 @@
+{
+    "byeSpots": {
+        "teams": [
+            {
+                "id": "e1",
+                "conference": "east",
+                "type": "east",
+                "name": "Boston Bruins",
+                "short": "BOS",
+                "seed": 1
+            },
+            {
+                "id": "e2",
+                "conference": "east",
+                "type": "east",
+                "name": "Tampa Bay Lightning",
+                "short": "TBL",
+                "seed": 2
+            },
+            {
+                "id": "e3",
+                "conference": "east",
+                "type": "east",
+                "name": "Washington Capitals",
+                "short": "WSH",
+                "seed": 3
+            },
+            {
+                "id": "e4",
+                "conference": "east",
+                "type": "east",
+                "name": "Philadelphia Flyers",
+                "short": "PHI",
+                "seed": 4
+            },
+            {
+                "id": "w1",
+                "conference": "west",
+                "type": "west",
+                "name": "St. Louis Blues",
+                "short": "STL",
+                "seed": 1
+            },
+            {
+                "id": "w2",
+                "conference": "west",
+                "type": "west",
+                "name": "Colorado Avalanche",
+                "short": "COL",
+                "seed": 2
+            },
+            {
+                "id": "w3",
+                "conference": "west",
+                "type": "west",
+                "name": "Vegas Golden Knights",
+                "short": "VGK",
+                "seed": 3
+            },
+            {
+                "id": "w4",
+                "conference": "west",
+                "type": "west",
+                "name": "Dallas Stars",
+                "short": "DAL",
+                "seed": 4
+            }
+        ]
+    }
+}

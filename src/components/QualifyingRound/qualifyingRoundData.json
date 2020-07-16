@@ -1,0 +1,118 @@
+{
+    "eastTeams": [
+        {
+            "name": "Pittsburgh Penguins",
+            "short": "PIT",
+            "seed": 5,
+            "matchup": "e1",
+            "selected": null
+        },      
+        {
+            "name": "Montreal Canadiens",
+            "short": "MTL",
+            "seed": 12,
+            "matchup": "e1",
+            "selected": null
+        },          
+        {
+            "name": "Carolina Hurricanes",
+            "short": "CAR",
+            "seed": 6,
+            "matchup": "e2",
+            "selected": null
+        },
+        {
+            "name": "New York Rangers",
+            "short": "NYR",
+            "seed": 11,
+            "matchup": "e2",
+            "selected": null
+        },        
+        {
+            "name": "New York Islanders",
+            "short": "NYI",
+            "seed": 7,
+            "matchup": "e3",
+            "selected": null
+        },
+        {
+            "name": "Florida Panthers",
+            "short": "FLA",
+            "seed": 10,
+            "matchup": "e3",
+            "selected": null
+        },        
+        {
+            "name": "Toronto Maple Leafs",
+            "short": "TOR",
+            "seed": 8,
+            "matchup": "e4",
+            "selected": null
+        },
+        {
+            "name": "Columbus Blue Jackets",
+            "short": "CBJ",
+            "seed": 9,
+            "matchup": "e4",
+            "selected": null
+        }
+    ],
+    "westTeams": [
+        {
+            "name": "Edmonton Oilers",
+            "short": "EDM",
+            "seed": 5,
+            "matchup": "w1",
+            "selected": null
+        },
+        {
+            "name": "Chicago Blackhalks",
+            "short": "CHI",
+            "seed": 12,
+            "matchup": "w1",
+            "selected": null
+        },
+        {
+            "name": "Nashville Predators",
+            "short": "NSH",
+            "seed": 6,
+            "matchup": "w2",
+            "selected": null
+        },
+        {
+            "name": "Arizona Coyotes",
+            "short": "ARI",
+            "seed": 11,
+            "matchup": "w2",
+            "selected": null
+        },        
+        {
+            "name": "Vancouver Canucks",
+            "short": "VAN",
+            "seed": 7,
+            "matchup": "w3",
+            "selected": null
+        },
+        {
+            "name": "Minnesota Wild",
+            "short": "MIN",
+            "seed": 10,
+            "matchup": "w3",
+            "selected": null
+        },
+        {
+            "name": "Calgary Flames",
+            "short": "CGY",
+            "seed": 8,
+            "matchup": "w4",
+            "selected": null
+        },
+        {
+            "name": "Winnipeg Jets",
+            "short": "WPG",
+            "seed": 9,
+            "matchup": "w4",
+            "selected": null
+        }
+    ]
+}

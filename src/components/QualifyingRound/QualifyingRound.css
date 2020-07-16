@@ -1,0 +1,34 @@
+.qualifying-round {
+    width: 60vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.matchups {
+    width: 140px;
+    height: 110px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.matchups li:nth-child(2n-1) {
+    border: 4px solid var(--alt-bg);
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.matchups li:nth-child(2n) {
+    border: 4px solid var(--alt-bg);
+    border-top: none;
+    margin-bottom: 50px;
+    background-color: white;
+}
+
+@media screen and (max-width: 1050px) { 
+    .qualifying-round {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+}
