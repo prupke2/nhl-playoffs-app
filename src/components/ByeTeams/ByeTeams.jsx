@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './ByeTeams.css';
 import byeTeamData from './byeTeamData.json';
-import { Button, DisabledButton } from '../HelperComponents/HelperComponents';
 
 export default class ByeTeams extends Component {
 
@@ -106,6 +105,9 @@ export default class ByeTeams extends Component {
                 ...this.state,
                 teams
             });
+
+            let saveByes = this.props.saveByes;
+            saveByes(teams);
         };
     }
 
@@ -121,15 +123,6 @@ export default class ByeTeams extends Component {
           east3: [],
           east4: [],
           east: []
-        }
-
-        var saveByes = this.props.saveByes;
-
-        function ByeButton(props) {
-            if (columns.west.length === 0 && columns.east.length === 0) {
-                return <Button className={props.className} label="Save" />
-            }
-            return <DisabledButton label="Save" />
         }
 
 		this.state.byeSpots.teams.forEach ((team) => {
@@ -243,9 +236,7 @@ export default class ByeTeams extends Component {
                     </div>
 
                 </section>
-                <ByeButton 
-                    className={this.props.saveByes}
-                />
+
             </React.Fragment>
 
 	    );

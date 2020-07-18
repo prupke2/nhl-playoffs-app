@@ -10,6 +10,24 @@
     height: 110px;
     margin: 0 auto;
     padding: 10px;
+    position: relative;
+}
+
+.matchups .east {
+    position: relative;
+    left: 50vw;
+    top: -77px;
+}
+
+.matchups .west {
+    position: relative;
+    top: -925px;
+}
+
+#east-matchups {
+    position: relative;
+    left: 50vw;
+    top: -90px;
 }
 
 .matchups li:nth-child(2n-1) {

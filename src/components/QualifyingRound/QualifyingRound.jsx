@@ -2,22 +2,24 @@ import React, { Component } from 'react';
 import './QualifyingRound.css';
 import QualifyingRoundData from './qualifyingRoundData.json';
 import Matchups from './Matchups/Matchups';
+import { Button } from '../HelperComponents/HelperComponents';
 
 export default class QualifyingRound extends Component {
     constructor() {
 		super();
         this.state = QualifyingRoundData;
-        this.teamSelectHandler = this.teamSelectHandler.bind(this)
+        this.teamSelectHandler = this.teamSelectHandler.bind(this);
+        // this.saveTeamsHandler = this.saveTeamsHandler.bind(this);
     }
 
     teamSelectHandler(teamShort, matchup) {
-        let search = this.state.eastTeams;
-        const conferenceLetter = matchup.slice(0,1);
-        if (conferenceLetter === "w") {
-            search = this.state.westTeams;
-        }
+        // let search = this.state.eastTeams;
+        // const conferenceLetter = matchup.slice(0,1);
+        // if (conferenceLetter === "w") {
+        //     search = this.state.westTeams;
+        // }
 
-        let teams = search.filter((team) => {
+        let teams = this.state.teams.filter((team) => {
 
             if (team.short === teamShort) {
                 team.selected = true;
@@ -33,27 +35,38 @@ export default class QualifyingRound extends Component {
             ...this.state,
             teams
         })
-        console.log("State: " + JSON.stringify(this.state, null, 4))
+
+        let saveQualifiers = this.props.saveQualifiers;
+        saveQualifiers(this.state);
+
     }
 
+    // saveTeamsHandler = (event) => {
+    //     let saveQualifiers = this.props.saveQualifiers;
+    //     console.log("STATE: " + JSON.stringify(this.state, null, 4))
+    //     saveQualifiers(this.state);
+    // }
+
     render() {
+
         return (
             <React.Fragment>
                 <h2>Qualifying Round</h2>
                 <section className="qualifying-round">
                     <div>
                         <h3 className="header align-left">west matchups</h3>
-                        <ul className="matchups west-matchups">
+                        <h3 className="header align-left" id="east-matchups">east matchups</h3>
+
+                        <ul className="matchups">
                             { React.Children.toArray(
                                 <Matchups
-                                    teams={this.state.westTeams}
+                                    teams={this.state}
                                     teamSelectHandler={this.teamSelectHandler}
                                 ></Matchups>
-                                // this.state.eastTeams.map((team, i) => <li>{team.name}</li>)
                             )}
                         </ul>
                     </div>
-                    <div>
+                    {/* <div>
                         <h3 className="header align-right">east matchups</h3>
                         <ul className="matchups east-matchups">
                             { React.Children.toArray(
@@ -61,12 +74,12 @@ export default class QualifyingRound extends Component {
                                     teams={this.state.eastTeams}
                                     teamSelectHandler={this.teamSelectHandler}
                                 ></Matchups>
-                                // this.state.eastTeams.map((team, i) => <li>{team.name}</li>)
                             )}
                         </ul>
-                    </div>
+                    </div> */}
 
                 </section>
+
             </React.Fragment>
         );
     }

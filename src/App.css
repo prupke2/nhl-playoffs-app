@@ -60,6 +60,8 @@ h3 {
 }
 
 button {
+  position: relative;
+  top: 550px;
   background-color: var(--button);
   cursor: pointer;
   color: white;

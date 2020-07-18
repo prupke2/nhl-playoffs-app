@@ -22,7 +22,18 @@ export function DisabledButton(props) {
 }
 
 export function Button(props) {
-    return (<button className={props.className}>
-        {props.label}
-    </button>);
+
+    if (props.byeStatus === "ready" && props.qualifyingTeamsStatus === "ready") {
+        return (
+            <button className={props.className}>
+                {props.label}
+            </button>
+        );
+    }
+    return (
+        <DisabledButton 
+            className={props.className}
+            label={props.label}
+        />
+    );
 }

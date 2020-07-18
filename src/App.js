@@ -3,19 +3,17 @@ import hockeyIcon from './assets/hockey_icon_large.png';
 import ByeTeams from './components/ByeTeams/ByeTeams';
 import QualifyingRound from './components/QualifyingRound/QualifyingRound'
 import matchups from './assets/matchups.json';
-import { Sidebar } from './components/HelperComponents/HelperComponents';
+import { Sidebar, Button, DisabledButton } from './components/HelperComponents/HelperComponents';
 
 import './App.css';
 
 class App extends Component {
 
   state = {
-    matchups: matchups,
-    eastTeamByeChoices: new Array(4).fill(null),
-    westTeamByeChoices: new Array(4).fill(null),
-    currentTime: null,
-    byeStatus: "unsaved",
-    byeTeams: null
+    byeStatus: "not_ready",
+    byeTeams: null,
+    qualifyingTeamsStatus: "not_ready",
+    qualifyingTeams: null
   }
 
   // function to test the api quickly
@@ -28,17 +26,22 @@ class App extends Component {
   }
 
   saveByesToState = (teams) => {
-    console.log("teams: " + teams);
-    this.setState({byeStatus: "ready", byeTeams: teams})
+    this.setState({byeTeams: teams})
+    console.log("state: " + JSON.stringify(this.state, null, 4))
   }
 
-  saveByes = (teams) => {
+  saveQualifyingTeamsToState = (teams) => {
+    this.setState({qualifyingTeams: teams})
+    console.log("state: " + JSON.stringify(this.state, null, 4))
+  }
+
+  save = (name) => {
     fetch('/api/save_byes', {
       method: 'POST',
-      body: JSON.stringify({ teams: teams })
+      body: JSON.stringify({ teams: this.state.byeTeams })
     })
     .then(results => results.json())
-    .then(data => this.setState({byeStatus: data.status, data: teams}));
+    .then(data => this.setState({byeStatus: data.status, data: this.state.byeTeams}));
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -53,20 +56,27 @@ class App extends Component {
           className="left-aside"
           image={hockeyIcon}
         />
-        
-        {/* <header className="left-header">
-        </header> */}
-          <ByeTeams 
-            saveByes= {this.saveByesToState}
-            byeStatus={this.state.byeStatus}
-          />    
-          <QualifyingRound />
-        {/* <header className="right-header" /> */}
+        <ByeTeams 
+          saveByes= {this.saveByesToState}
+          byeStatus={this.state.byeStatus}
+        />    
+        <QualifyingRound 
+          saveQualifiers={this.saveQualifyingTeamsToState}
+          qualifyingTeamsStatus={this.state.qualifyingTeamsStatus}
+        />
+
+        <input type="name" />Name:
+
+        <Button 
+          save= {this.saveByes}
+          byeStatus={this.state.byeStatus}
+          qualifyingTeamsStatus={this.state.qualifyingTeamsStatus}
+          label="Save"
+        />
 
         <Sidebar 
           className="right-aside"
         />
-
       </main>
     );
   };
