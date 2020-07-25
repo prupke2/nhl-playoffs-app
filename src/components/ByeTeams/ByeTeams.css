@@ -6,16 +6,9 @@ section {
     margin: auto;
 }
 
-h3 {
-    margin-top: 90px;
-}
-
-.drag-container h3.header {
-    margin-top: 90px;
-}
-
 .drag-container {
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -26,19 +19,27 @@ h3 {
 }
 
 .drag-container > div {
-    margin-top: 25px;
+    margin-top: 100px;
     position: absolute;
     width: 200px;
     height: auto;
-    top: 0;
+    top: -100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.drag-east, .drag-west {
+    margin-top: 70px;
+    /* height: auto; */
+    min-height: 450px;
 }
 
 .drag-west {
-    left: 10vw;
+    left: -20vw;
 }
 
 .drag-east {
-    right: 10vw;
+    right: -20vw;
 }
 
 .header {
@@ -90,6 +91,8 @@ h3 {
     align-items: center;
     color: var(--alt-text);
     margin: 0 0 15px;
+    max-width: 200px;
+    min-width: 50px;
 }
 
 .logo-wrapper {
@@ -112,3 +115,38 @@ h3 {
     max-height: 40px;
     margin: auto;
 }
+
+@media screen and (max-width: 850px) { 
+    .team-wrapper {
+        width: 110px;
+    }
+
+    .bye-team-round {
+        width: 60vw;
+        justify-content: center;
+    }
+
+    .qualifying-round {
+        width: 80vw !important;
+        margin: 10px auto;
+        justify-content: space-around;
+    }
+
+    .align-right {
+        text-align: left;
+    }
+
+    .droppable {
+        width: 120px !important;
+    }
+
+    .drag-west {
+        left: -25vw !important;
+    }
+
+    .drag-east {
+        position: absolute;
+        left: 30px;
+    }
+}
+

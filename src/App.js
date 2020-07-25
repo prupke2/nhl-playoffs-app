@@ -1,19 +1,22 @@
 import React, { Component} from 'react';
 import hockeyIcon from './assets/hockey_icon_large.png';
 import ByeTeams from './components/ByeTeams/ByeTeams';
-import QualifyingRound from './components/QualifyingRound/QualifyingRound'
-import matchups from './assets/matchups.json';
-import { Sidebar, Button, DisabledButton } from './components/HelperComponents/HelperComponents';
+import QualifyingRound from './components/QualifyingRound/QualifyingRound';
+import { Sidebar, Button, Input, Footer } from './components/HelperComponents/HelperComponents';
 
 import './App.css';
 
 class App extends Component {
 
   state = {
-    byeStatus: "not_ready",
+    byeTeamsStatus: "not_ready",
     byeTeams: null,
     qualifyingTeamsStatus: "not_ready",
-    qualifyingTeams: null
+    qualifyingTeams: null,
+    name: null,
+    nameStatus: null,
+    saveStatus: null,
+    saveMessage: null
   }
 
   // function to test the api quickly
@@ -25,58 +28,139 @@ class App extends Component {
     .then(data => this.setState({currentTime: data.time}));
   }
 
+  checkIfNameIsTaken = (name) => {
+    console.log("name: " + name);
+    fetch('/names/' + name, {
+      method: 'GET',
+    })
+    .then(results => results.json())
+    .then(data => this.setState({nameStatus: data.status}))
+    .then(console.log("Status: " + this.state.nameStatus));
+  }
+
+  checkIfReady = (check) => {
+    let count = 0;
+
+    if (check === "qualifyingTeams") {
+      for (let i=0; i < 16; i++) {
+        if (this.state.qualifyingTeams.teams[i].selected === true) {
+          count += 1
+        }
+      }
+      if (count >= 8) {
+        this.setState({qualifyingTeamsStatus: "ready"});
+      }
+    } else {
+      for (let i=1; i < 8; i++) {
+        console.log("team: " + JSON.stringify(this.state.byeTeams[i], null, 4))
+        if ((this.state.byeTeams[i].type === "east") || (this.state.byeTeams[i].type === "west")) {
+          console.log("Not ready");
+          this.setState({byeTeamsStatus: "not_ready"});
+          return
+        }
+      }
+      if (count === 0) {
+        console.log("Ready.");
+        this.setState({byeTeamsStatus: "ready"});
+      }
+    }
+  }
+
   saveByesToState = (teams) => {
-    this.setState({byeTeams: teams})
-    console.log("state: " + JSON.stringify(this.state, null, 4))
+    this.setState({
+      byeTeams: teams
+    }, () => {
+      this.checkIfReady("byeTeams");
+    });
   }
 
   saveQualifyingTeamsToState = (teams) => {
-    this.setState({qualifyingTeams: teams})
-    console.log("state: " + JSON.stringify(this.state, null, 4))
+    this.setState({
+      qualifyingTeams: teams
+    }, () => {
+      this.checkIfReady("qualifyingTeams");
+    });    
   }
 
-  save = (name) => {
-    fetch('/api/save_byes', {
+  nameChangeHandler = (name) => {
+    if (name.length === 0) {
+      this.setState( {
+        nameStatus: null
+      })
+      return
+    }
+
+    this.setState( {
+      name: name
+    }, () => {
+      if (name !== null) {
+        this.checkIfNameIsTaken(name);
+      }
+    });
+  }
+
+  saveToDB = () => {
+    console.log(this.state.byeTeams, this.state.qualifyingTeamsStatus);
+    fetch('/api/save', {
       method: 'POST',
-      body: JSON.stringify({ teams: this.state.byeTeams })
+      body: JSON.stringify(
+        { 
+          name: this.state.name,
+          byeTeams: this.state.byeTeams,
+          qualifyingTeams: this.state.qualifyingTeams
+        }
+      )
     })
     .then(results => results.json())
-    .then(data => this.setState({byeStatus: data.status, data: this.state.byeTeams}));
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    return state;
+    .then(data => this.setState({saveStatus: data.status, saveMessage: data.message}));
   }
 
   render() {
 
+    console.log("status: " + this.state.saveStatus);
+    console.log("message: " + this.state.saveMessage);
+
     return (
       <main>
+        <section>
+          <h1>2020 NHL Playoff Pool</h1>
+        </section>
+        <ul>
+          <li>Select your picks in two minutes.</li>
+          <li>No signup required.</li>
+        </ul>
         <Sidebar 
           className="left-aside"
           image={hockeyIcon}
+        />
+        <QualifyingRound 
+          saveQualifiers={this.saveQualifyingTeamsToState}
+          qualifyingTeamsStatus={this.state.qualifyingTeamsStatus}
         />
         <ByeTeams 
           saveByes= {this.saveByesToState}
           byeStatus={this.state.byeStatus}
         />    
-        <QualifyingRound 
-          saveQualifiers={this.saveQualifyingTeamsToState}
-          qualifyingTeamsStatus={this.state.qualifyingTeamsStatus}
+        <Input 
+          type="text"
+          nameChanged={this.nameChangeHandler}
+          nameStatus={this.state.nameStatus}
+          value={this.state.name}
         />
-
-        <input type="name" />Name:
-
         <Button 
-          save= {this.saveByes}
-          byeStatus={this.state.byeStatus}
-          qualifyingTeamsStatus={this.state.qualifyingTeamsStatus}
-          label="Save"
+          name = {this.state.name}
+          save = {this.saveToDB}
+          nameStatus = {this.state.nameStatus}
+          byeTeamsStatus ={this.state.byeTeamsStatus}
+          qualifyingTeamsStatus = {this.state.qualifyingTeamsStatus}
+          label="Submit picks"
+          saveStatus = {this.state.saveStatus}
+          saveMessage = {this.state.saveMessage}
         />
-
         <Sidebar 
           className="right-aside"
         />
+        <Footer />
       </main>
     );
   };

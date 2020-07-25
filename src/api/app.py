@@ -14,13 +14,21 @@ def index():
 def get_time():
     return {'time': time.time()}
 
-@app.route('/api/save_byes', methods=["POST"])
+@app.route('/names/<string:name>')
+def check_name(name):
+    status = "unavailable"
+    if len(name) > 0:
+        status="available"
+    return {'status': status}
+
+@app.route('/api/save', methods=["POST"])
 def save_byes():
+    print("SAVING...")
+
     data = json.loads(request.data)
-    teams = data['teams']
-    for team in teams:
-        if team['type'] in ('east', 'west'):
-            return {"status": "unfinished"}
-        print(team['short'] + ": " + team['type'])
-    # print("Data: " + str(data))
-    return {"status": "saved"}
+    print(str(data))
+    bye_teams = data['byeTeams']
+    qualifying_teams = data['qualifyingTeams']
+    print(str(qualifying_teams))
+
+    return {"status": "saved", "message": "Your picks were saved. Come back soon to see the leaderboard!"}

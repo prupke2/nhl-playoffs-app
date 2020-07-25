@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './QualifyingRound.css';
 import QualifyingRoundData from './qualifyingRoundData.json';
 import Matchups from './Matchups/Matchups';
-import { Button } from '../HelperComponents/HelperComponents';
 
 export default class QualifyingRound extends Component {
     constructor() {
@@ -52,6 +51,18 @@ export default class QualifyingRound extends Component {
         return (
             <React.Fragment>
                 <h2>Qualifying Round</h2>
+                <div className="instructions">
+                    <ul>
+                        <li>Click on one team in each matchup to select who you believe will win.</li>
+                        <li>
+                            <span className="scoring">Scoring: </span> 
+                            <span className="num">1 point</span> for each correct pick, and &nbsp;
+                            <span className="num">1 bonus point</span> for picking an&nbsp;
+                            <div className="seed inline-seed">11</div> or&nbsp;
+                            <div className="seed inline-seed">12</div> seed upset
+                        </li>
+                    </ul>
+                </div>
                 <section className="qualifying-round">
                     <div>
                         <h3 className="header align-left">west matchups</h3>

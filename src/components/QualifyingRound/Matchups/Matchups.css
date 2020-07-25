@@ -4,15 +4,13 @@
     color: white;
 }
 
-
 li.null {
     outline: 5px solid transparent;
     cursor: pointer;
 }
 
 li.true {
-    /* border: 2px solid transparent !important;  */
-    outline: 5px solid green;
+    outline: 5px solid var(--eligible);
     border: 2px solid transparent !important;
 }
 
@@ -22,5 +20,3 @@ li.false {
     filter: contrast(60%);
     cursor: pointer;
 }
-
-

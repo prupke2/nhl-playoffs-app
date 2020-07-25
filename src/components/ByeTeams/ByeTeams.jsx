@@ -17,7 +17,7 @@ export default class ByeTeams extends Component {
         const eligibleSpots = document.getElementById(eligibleBox);
         if (eligibleSpots !== null) {
             // put a green box around the spots you can drag it to
-            eligibleSpots.style.border = "2px solid lightgreen";
+            eligibleSpots.style.border = "2px solid var(--eligible)";
         }
 
         // sets the cursor to a closed hand while they are grabbing a box
@@ -30,7 +30,6 @@ export default class ByeTeams extends Component {
     }
     
     onDragEnd = (event, id) => {
-        console.log("onDragEnd");
 
         const eastBoxes = document.getElementById("east-droppable-box");
         const westBoxes = document.getElementById("west-droppable-box");
@@ -43,7 +42,6 @@ export default class ByeTeams extends Component {
     }
 
 	onDrop = (event, droppedTeamType) => {
-        console.log("state.byeSpots.teams: " + JSON.stringify(this.state.byeSpots.teams, null, 4));
 
         event.preventDefault();
         const droppedTeamConference = droppedTeamType.slice(0,4);
@@ -86,7 +84,7 @@ export default class ByeTeams extends Component {
 
                 // cycle through the teams to update the dragged and dropped slot types
                 teams = this.state.byeSpots.teams.filter((team) => {
-                    if (team.type === droppedTeamType) {
+                    if (team.type === droppedTeamType && droppedTeamType !== "east" && droppedTeamType !== "west") {
                         // console.log(team.short + " moving to slot: " + draggedTeamType);
                         // update team in target spot to the dragged team's old spot
                         team.type = draggedTeamType;
@@ -156,11 +154,17 @@ export default class ByeTeams extends Component {
 
 	    return (
             <React.Fragment>
-                <div>
-                    {/* Instructions go here */}
-                </div>
                 <h2 className="round-robin">Bye Team Round Robin</h2>
+                <div className="instructions">
+                    <ul>
+                        <li><span className="scoring">Bonus round -</span>  Drag and drop the teams in the order you think they will finish</li>
+                        <li>
+                            <span className="scoring">Scoring: </span> 
+                            <span className="num">3 points</span> if the order is correct, <span className="num">0 points</span> otherwise
+                        </li>   
+                    </ul>
 
+                </div>
                 <section className="bye-team-round">
 
                     <div className="drag-container drag-container-west">

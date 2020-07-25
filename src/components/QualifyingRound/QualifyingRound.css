@@ -1,5 +1,6 @@
 .qualifying-round {
     width: 60vw;
+    height: 900px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -27,7 +28,7 @@
 #east-matchups {
     position: relative;
     left: 50vw;
-    top: -90px;
+    top: -70px;
 }
 
 .matchups li:nth-child(2n-1) {
@@ -43,10 +44,9 @@
     background-color: white;
 }
 
-@media screen and (max-width: 1050px) { 
-    .qualifying-round {
-        width: 100%;
-        justify-content: space-around;
-    }
-
+.inline-seed {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
 }
