@@ -17,7 +17,7 @@ export function Sidebar(props) {
 
 export function DisabledButton(props) {
     return (
-        <button disabled={true} className={props.className}>
+        <button disabled={true} className={props.className} title="Finish making your picks and enter your name!">
             {props.label}
         </button>)
     ;    

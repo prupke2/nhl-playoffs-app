@@ -16,7 +16,8 @@ class App extends Component {
     name: null,
     nameStatus: null,
     saveStatus: null,
-    saveMessage: null
+    saveMessage: null,
+    club: null
   }
 
   // function to test the api quickly
@@ -82,6 +83,16 @@ class App extends Component {
     });    
   }
 
+  getRequests = () => {
+    let s1 = window.location.search.substring(1, window.location.search.length).split('&'),
+        r = {}, s2, i;
+    for (i = 0; i < s1.length; i += 1) {
+        s2 = s1[i].split('=');
+        r[decodeURIComponent(s2[0]).toLowerCase()] = decodeURIComponent(s2[1]);
+    }
+    return r;
+  }
+
   nameChangeHandler = (name) => {
     if (name.length === 0) {
       this.setState( {
@@ -100,6 +111,7 @@ class App extends Component {
   }
 
   saveToDB = () => {
+    let club = this.getRequests().club
     console.log(this.state.byeTeams, this.state.qualifyingTeamsStatus);
     fetch('/api/save', {
       method: 'POST',
@@ -107,7 +119,8 @@ class App extends Component {
         { 
           name: this.state.name,
           byeTeams: this.state.byeTeams,
-          qualifyingTeams: this.state.qualifyingTeams
+          qualifyingTeams: this.state.qualifyingTeams,
+          club: club
         }
       )
     })
