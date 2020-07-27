@@ -95,7 +95,6 @@ class App extends Component {
   }
 
   nameChangeHandler = (name) => {
-    console.log("User cookie: " + this.state.user);
     if (name.length === 0) {
       this.setState( {
         nameStatus: null
@@ -114,7 +113,8 @@ class App extends Component {
 
   saveToDB = () => {
     let club = this.getRequests().club;
-    document.cookie = "user=" + this.state.name + "; expires=Thu, 31 Dec 2020 12:00:00 UTC";
+    this.setCookie("club", club);
+    this.setCookie("user", this.state.name);
 
     fetch('/api/save', {
       method: 'POST',
@@ -145,6 +145,12 @@ class App extends Component {
       }
     }
     return "";
+  }
+
+  setCookie = (string, value) => {
+    const expiry = new Date(); 
+    expiry.setDate(expiry.getDate() + 90)
+    document.cookie = string + "=" + value + "; expires=" + expiry
   }
 
   render() {

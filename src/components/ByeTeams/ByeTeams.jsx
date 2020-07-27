@@ -157,10 +157,10 @@ export default class ByeTeams extends Component {
                 <h2 className="round-robin">Bye Team Round Robin</h2>
                 <div className="instructions">
                     <ul>
-                        <li><span className="scoring">Bonus round -</span>  Drag and drop the teams in the order you think they will finish</li>
+                        <li><span className="scoring">Bonus round -</span>  Drag and drop the teams in the order you think they will finish.</li>
                         <li>
                             <span className="scoring">Scoring: </span> 
-                            <span className="num">3 points</span> if the order is correct, <span className="num">0 points</span> otherwise
+                            <span className="num">2 points</span> for each conference that has the order correct (must be perfect).
                         </li>   
                     </ul>
 

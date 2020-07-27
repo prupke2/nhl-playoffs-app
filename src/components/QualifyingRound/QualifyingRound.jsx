@@ -53,13 +53,13 @@ export default class QualifyingRound extends Component {
                 <h2>Qualifying Round</h2>
                 <div className="instructions">
                     <ul>
-                        <li>Click on one team in each matchup to select who you believe will win.</li>
+                        <li>Click on one team in each matchup to select the team you think will win.</li>
                         <li>
                             <span className="scoring">Scoring: </span> 
                             <span className="num">1 point</span> for each correct pick, and &nbsp;
                             <span className="num">1 bonus point</span> for picking an&nbsp;
                             <div className="seed inline-seed">11</div> or&nbsp;
-                            <div className="seed inline-seed">12</div> seed upset
+                            <div className="seed inline-seed">12</div> seed upset.
                         </li>
                     </ul>
                 </div>
@@ -77,17 +77,6 @@ export default class QualifyingRound extends Component {
                             )}
                         </ul>
                     </div>
-                    {/* <div>
-                        <h3 className="header align-right">east matchups</h3>
-                        <ul className="matchups east-matchups">
-                            { React.Children.toArray(
-                                <Matchups
-                                    teams={this.state.eastTeams}
-                                    teamSelectHandler={this.teamSelectHandler}
-                                ></Matchups>
-                            )}
-                        </ul>
-                    </div> */}
 
                 </section>
 
