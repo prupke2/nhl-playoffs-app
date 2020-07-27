@@ -17,7 +17,13 @@ class App extends Component {
     nameStatus: null,
     saveStatus: null,
     saveMessage: null,
-    club: null
+    club: null,
+    user: null
+  }
+
+  componentDidMount() {
+    let user = this.getCookie("user")
+    this.setState({user: user})
   }
 
   // function to test the api quickly
@@ -30,13 +36,11 @@ class App extends Component {
   }
 
   checkIfNameIsTaken = (name) => {
-    console.log("name: " + name);
     fetch('/names/' + name, {
       method: 'GET',
     })
     .then(results => results.json())
     .then(data => this.setState({nameStatus: data.status}))
-    .then(console.log("Status: " + this.state.nameStatus));
   }
 
   checkIfReady = (check) => {
@@ -53,15 +57,12 @@ class App extends Component {
       }
     } else {
       for (let i=1; i < 8; i++) {
-        console.log("team: " + JSON.stringify(this.state.byeTeams[i], null, 4))
         if ((this.state.byeTeams[i].type === "east") || (this.state.byeTeams[i].type === "west")) {
-          console.log("Not ready");
           this.setState({byeTeamsStatus: "not_ready"});
           return
         }
       }
       if (count === 0) {
-        console.log("Ready.");
         this.setState({byeTeamsStatus: "ready"});
       }
     }
@@ -94,6 +95,7 @@ class App extends Component {
   }
 
   nameChangeHandler = (name) => {
+    console.log("User cookie: " + this.state.user);
     if (name.length === 0) {
       this.setState( {
         nameStatus: null
@@ -111,8 +113,9 @@ class App extends Component {
   }
 
   saveToDB = () => {
-    let club = this.getRequests().club
-    console.log(this.state.byeTeams, this.state.qualifyingTeamsStatus);
+    let club = this.getRequests().club;
+    document.cookie = "user=" + this.state.name + "; expires=Thu, 31 Dec 2020 12:00:00 UTC";
+
     fetch('/api/save', {
       method: 'POST',
       body: JSON.stringify(
@@ -125,14 +128,26 @@ class App extends Component {
       )
     })
     .then(results => results.json())
-    .then(data => this.setState({saveStatus: data.status, saveMessage: data.message}));
+    .then(data => this.setState({saveStatus: data.status, saveMessage: data.message}))
+  }
+
+  getCookie = (cookieName) => {
+    let name = cookieName + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
   }
 
   render() {
-
-    console.log("status: " + this.state.saveStatus);
-    console.log("message: " + this.state.saveMessage);
-
     return (
       <main>
         <section>
