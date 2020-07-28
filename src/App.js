@@ -106,7 +106,8 @@ class App extends Component {
       name: name
     }, () => {
       if (name !== null) {
-        this.checkIfNameIsTaken(name);
+        // this.checkIfNameIsTaken(name);
+        this.setState({nameStatus: "available"});
       }
     });
   }
