@@ -53,7 +53,7 @@ export default class QualifyingRound extends Component {
                 <h2>Qualifying Round</h2>
                 <div className="instructions">
                     <ul>
-                        <li>Click on one team in each matchup to select the team you think will win.</li>
+                        <li>For each matchup, click on the team you think will win.</li>
                         <li>
                             <span className="scoring">Scoring: </span> 
                             <span className="num">1 point</span> for each correct pick, and &nbsp;

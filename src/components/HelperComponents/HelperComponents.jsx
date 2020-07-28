@@ -74,7 +74,7 @@ export function Message(props) {
         return " "
     }
 
-    let message = "🚫Username is not available."
+    let message = "🚫"
     if (props.status === "available" || props.saveStatus === "saved") {
         message = "✅"
         console.log("props.saveStatus: " + props.saveStatus + ", props.saveMessage: " + props.saveMessage);
