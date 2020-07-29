@@ -30,6 +30,5 @@ def save_byes():
     bye_teams = data['byeTeams']
     qualifying_teams = data['qualifyingTeams']
     print(str(qualifying_teams))
-    print("CLUB: " + str(data['club']))
 
     return {"status": "saved", "message": "Your picks were saved. Come back soon to see the leaderboard!"}

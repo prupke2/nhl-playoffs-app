@@ -100,9 +100,9 @@ export function Input(props) {
                 value={props.name}
                 onChange={(event) => nameChangeHandler(event)}
             />&nbsp;
-            <Message
+            {/* <Message
                 status={props.nameStatus}
-            />
+            /> */}
         </div>
     );
 }
