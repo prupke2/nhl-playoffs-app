@@ -156,7 +156,7 @@ button {
   margin: 12px;
 }
 
-.status.saved, .status.error {
+.status.saved, .status.not_saved {
   margin: -80px auto 12px;
   background-color: var(--eligible);
   padding: 20px;
@@ -167,10 +167,9 @@ button {
   border-radius: 4px;
 }
 
-.status.error {
+.status.status.not_saved {
   background-color: var(--error);
   color: var(--alt-text);
-
 }
 
 button:disabled {

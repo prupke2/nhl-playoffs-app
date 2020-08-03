@@ -1,0 +1,51 @@
+.bye-team-wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 200px;
+	margin: 5px auto;
+}
+
+.bye-team-wrapper > .name {
+	display: none;
+}
+
+.bye-team-wrapper:nth-child(2n) {
+	display: flex;
+}
+
+.user-picks {
+	width: 85%;
+	display: flex;
+	flex-direction: row;
+}
+
+.user-picks ul li .bye-team-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+}
+
+.team-name {
+	width: 30vw;
+	font-size: 1.4rem;
+	font-weight: bold;
+	text-align: left;
+	position: relative;
+	left: 30vw;
+	margin: 30px 10px;
+	overflow-x: hidden;
+}
+
+.team-name-placeholder {
+	font-size: 1.4rem;
+	margin: 30px 0;
+}
+
+.bye-seed {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: left;
+	font-size: 1.2rem;
+	margin: 7px;
+}

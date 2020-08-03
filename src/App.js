@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import hockeyIcon from './assets/hockey_icon_large.png';
 import ByeTeams from './components/ByeTeams/ByeTeams';
 import QualifyingRound from './components/QualifyingRound/QualifyingRound';
+import Leaderboard from './components/Leaderboard/Leaderboard';
 import { Sidebar, Button, Input, Footer } from './components/HelperComponents/HelperComponents';
 
 import './App.css';
@@ -22,8 +23,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let user = this.getCookie("user")
-    this.setState({user: user})
+    let user = this.getCookie("user");
+    this.setState({user: user});
+    this.getTeams();
+    console.log("state: " + JSON.stringify(this.state, null, 4))
   }
 
   // function to test the api quickly
@@ -33,6 +36,20 @@ class App extends Component {
     })
     .then(results => results.json())
     .then(data => this.setState({currentTime: data.time}));
+  }
+
+  getTeams = () => {
+    fetch('/api/get_teams', {
+      method: 'GET',
+    })
+    .then(results => results.json())
+    .then(data => this.setState(
+        {
+          byeTeams: data.bye_teams,
+          qualifyingTeams: data.qualifying_teams
+        }
+      )
+    );
   }
 
   checkIfNameIsTaken = (name) => {
@@ -154,20 +171,27 @@ class App extends Component {
   }
 
   render() {
+    console.log("state: " + JSON.stringify(this.state, null, 4))
     return (
       <main>
         <section>
           <h1>2020 NHL Playoff Pool</h1>
         </section>
-        <ul>
+        {/* <ul>
           <li>Select your picks in two minutes.</li>
           <li>No signup required.</li>
-        </ul>
+        </ul> */}
         <Sidebar 
           className="left-aside"
           image={hockeyIcon}
         />
-        <QualifyingRound 
+        <ul>
+          <Leaderboard
+            byeTeams={this.state.byeTeams}
+            qualifyingTeams={this.state.qualifyingTeams}
+          ></Leaderboard>
+        </ul>
+        {/* <QualifyingRound 
           saveQualifiers={this.saveQualifyingTeamsToState}
           qualifyingTeamsStatus={this.state.qualifyingTeamsStatus}
         />
@@ -190,7 +214,7 @@ class App extends Component {
           label="Submit picks"
           saveStatus = {this.state.saveStatus}
           saveMessage = {this.state.saveMessage}
-        />
+        /> */}
         <Sidebar 
           className="right-aside"
         />
