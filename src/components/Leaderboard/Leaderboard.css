@@ -50,15 +50,6 @@
 	margin: 7px;
 }
 
-/* .points {
-	font-weight: ;
-} */
-
-li {
-	display: grid;
-	grid-column-gap: 50px;
-}
-
 .leaders {
 	display: flex;
 	flex-direction: column;
@@ -97,4 +88,8 @@ li {
 	font-weight: bold;
 	font-size: 1.3rem;
 	margin: 5px auto;
+}
+
+.team-points {
+	width: 150px;
 }

@@ -2,10 +2,12 @@ import React, { Component} from 'react';
 import hockeyIcon from './assets/hockey_icon_large.png';
 import ByeTeams from './components/ByeTeams/ByeTeams';
 import QualifyingRound from './components/QualifyingRound/QualifyingRound';
+import Results from './components/Leaderboard/Results';
 import Leaderboard from './components/Leaderboard/Leaderboard';
 import { Sidebar, Button, Input, Footer } from './components/HelperComponents/HelperComponents';
-
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './App.css';
+import 'react-tabs/style/react-tabs.css';
 
 class App extends Component {
 
@@ -19,6 +21,7 @@ class App extends Component {
     saveStatus: null,
     saveMessage: null,
     club: null,
+    leaders: null,
     user: null,
     userPicks: null
   }
@@ -26,6 +29,7 @@ class App extends Component {
   componentDidMount() {
     let user = this.getCookie("user");
     this.setState({user: user});
+    this.getLeaders();
     this.getUserPicks();
     console.log("state: " + JSON.stringify(this.state, null, 4))
   }
@@ -37,6 +41,14 @@ class App extends Component {
     })
     .then(results => results.json())
     .then(data => this.setState({currentTime: data.time}));
+  }
+
+  getLeaders = () => {
+    fetch('/api/leaderboard', {
+      method: 'GET',
+    })
+    .then(results => results.json())
+    .then(data => this.setState({leaders: data.leaders}));
   }
 
   getUserPicks = () => {
@@ -171,7 +183,7 @@ class App extends Component {
   }
 
   render() {
-    console.log("state: " + JSON.stringify(this.state, null, 4))
+    // console.log("state: " + JSON.stringify(this.state, null, 4))
     return (
       <main>
         <section>
@@ -185,59 +197,51 @@ class App extends Component {
           className="left-aside"
           image={hockeyIcon}
         />
-        <h2>Leaderboard</h2>
-        <ul className="leaders">
-          <li>
-            <div>L8on</div>
-            <div> 7</div>
-          </li>
-          <li>
-            <div>randomBoys3434</div>
-            <div> 5</div>
-          </li>
-          <li>
-            <div>Paul</div>
-            <div> 4</div>
-          </li>
-          <li>
-            <div>bryan</div>
-            <div> 4</div>
-          </li>
-          <li>
-            <div>Dave</div>
-            <div> 3</div>
-          </li>
-          <li>
-            <div>Eric B</div>
-            <div> 1</div>
-          </li>
-          <li>
-            <div>James</div>
-            <div> 1</div>
-          </li>
-          <li>
-            <div>jwassink</div>
-            <div> 1</div>
-          </li>
-          <li>
-            <div>Adam Green</div>
-            <div> 1</div>
-          </li>
-          <li>
-            <div>Aron</div>
-            <div> 1</div>
-          </li>
-        </ul>
-        <h2>Full Results</h2>
+        <div className = "greeting">
+          { this.state.user === null ? "" : "Hey " + this.state.user +  
+            ", it's almost time to enter your picks for round 2!"
+          }
+          <br />
+          
+        </div>
 
-        <ul class="leaderboard">
-          <Leaderboard
-            // byeTeams={this.state.byeTeams}
-            // qualifyingTeams={this.state.qualifyingTeams}
-            user={this.state.user}
-            userPicks={this.state.userPicks}
-          />
-        </ul>
+        <Tabs>
+          <TabList>
+            <div>
+                <Tab><div className="tab">Leaderboard</div></Tab>
+                <Tab><div className="tab">Full Results</div></Tab>
+                {/* <Tab><div className="tab">Round 2</div></Tab> */}
+            </div>
+          </TabList>
+
+          <TabPanel>
+            <ul className="leaders">
+              <Leaderboard 
+                leaders={this.state.leaders}
+                user={this.state.user}
+              />
+            </ul>
+          </TabPanel>
+          <TabPanel>
+            <ul className="results">
+              <Results
+                // byeTeams={this.state.byeTeams}
+                // qualifyingTeams={this.state.qualifyingTeams}
+                user={this.state.user}
+                userPicks={this.state.userPicks}
+              />
+            </ul>
+          </TabPanel>
+          {/* <TabPanel>
+              <QualifyingRound
+                // byeTeams={this.state.byeTeams}
+                // qualifyingTeams={this.state.qualifyingTeams}
+                user={this.state.user}
+                userPicks={this.state.userPicks}
+              />
+          </TabPanel>           */}
+        </Tabs>
+
         {/* <QualifyingRound 
           saveQualifiers={this.saveQualifyingTeamsToState}
           qualifyingTeamsStatus={this.state.qualifyingTeamsStatus}

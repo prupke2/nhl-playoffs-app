@@ -34,7 +34,62 @@ def save_byes():
 
 @app.route('/api/leaderboard')
 def leaderboard():
-    return {""}
+    return {
+        "leaders": [    
+            {
+            "name": "cds", 
+            "points": 6
+            }, 
+            {
+            "name": "asdfaa", 
+            "points": 6
+            }, 
+            {
+            "name": "fdf", 
+            "points": 4
+            }, 
+            {
+            "name": "fdA", 
+            "points": 4
+            }, 
+            {
+            "name": "fgdfg", 
+            "points": 4
+            }, 
+            {
+            "name": "fd", 
+            "points": 4
+            }, 
+            {
+            "name": "ddd", 
+            "points": 4
+            }, 
+            {
+            "name": "dd", 
+            "points": 4
+            }, 
+            {
+            "name": "ghd", 
+            "points": 4
+            }, 
+            {
+            "name": "vdvdvdv", 
+            "points": 4
+            }, 
+            {
+            "name": "paul", 
+            "points": 2
+            }, 
+            {
+            "name": "a", 
+            "points": 2
+            }, 
+            {
+            "name": "paul2", 
+            "points": 2
+            }
+        ]
+    }
 
 @app.route('/api/user_picks')
 def user_picks():
