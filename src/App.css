@@ -21,7 +21,6 @@
   --error: rgba(238, 11, 11, 0.651);
 }
 
-
 /* 🎨 colors: #ffffff | #1b2733 | #637282 | #AB24A1 */
 
 main {
@@ -87,6 +86,10 @@ h3 {
   padding: 10px;
   font-size: 0.7rem;
   color: white;
+}
+
+.display-none {
+  display: none;
 }
 
 .instructions {
@@ -210,6 +213,10 @@ button:disabled {
 
 .right-aside {
   right: 0;
+}
+
+.leaderboard {
+  display: grid;
 }
 
 @media screen and (max-width: 1050px) { 

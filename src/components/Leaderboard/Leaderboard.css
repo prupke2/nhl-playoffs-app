@@ -49,3 +49,52 @@
 	font-size: 1.2rem;
 	margin: 7px;
 }
+
+/* .points {
+	font-weight: ;
+} */
+
+li {
+	display: grid;
+	grid-column-gap: 50px;
+}
+
+.leaders {
+	display: flex;
+	flex-direction: column;
+	margin: 20px;
+}
+
+.leaders li {
+	font-size: 1.5rem;
+	width: 300px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-left: calc(50vw - 150px);
+}
+
+.leaders li > div {
+	font-weight: bold;
+	padding: 4px;
+}
+
+.leaders li:nth-child(2n) {
+	background-color: var(--main-bg);
+}
+
+.user-name {
+	font-weight: bold;
+	font-size: 2.2rem;
+	margin: 10px auto;
+}
+
+.round-robin, .team-points {
+	width: 230px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	font-weight: bold;
+	font-size: 1.3rem;
+	margin: 5px auto;
+}

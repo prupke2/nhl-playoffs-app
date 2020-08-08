@@ -91,20 +91,37 @@ export function Input(props) {
         let updateName = props.nameChanged;
         updateName(event.target.value);
     }
+    if (props.user !== null) {
+        return (
+            <div className="name-input">
+                <input 
+                    type="name"
+                    placeholder="name / username"
+                    value={props.user}
+                    onChange={(event) => nameChangeHandler(event)}
+                    disabled="True"
+                />&nbsp;
+                {/* <Message
+                    status={props.nameStatus}
+                /> */}
+            </div>
+        );
+    } else {
     
-    return (
-        <div className="name-input">
-            <input 
-                type="name"
-                placeholder="name / username"
-                value={props.name}
-                onChange={(event) => nameChangeHandler(event)}
-            />&nbsp;
-            {/* <Message
-                status={props.nameStatus}
-            /> */}
-        </div>
-    );
+        return (
+            <div className="name-input">
+                <input 
+                    type="name"
+                    placeholder="name / username"
+                    value={props.user}
+                    onChange={(event) => nameChangeHandler(event)}
+                />&nbsp;
+                {/* <Message
+                    status={props.nameStatus}
+                /> */}
+            </div>
+        );
+    }
 }
 
 export function Footer(props) {

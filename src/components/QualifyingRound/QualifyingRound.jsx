@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
 import './QualifyingRound.css';
-import QualifyingRoundData from './qualifyingRoundData.json';
+// import QualifyingRoundData from './qualifyingRoundData.json';
+import QuarterfinalRoundData from './quarterfinalRoundData.json';
 import Matchups from './Matchups/Matchups';
 
 export default class QualifyingRound extends Component {
     constructor() {
 		super();
-        this.state = QualifyingRoundData;
+        this.state = QuarterfinalRoundData;
         this.teamSelectHandler = this.teamSelectHandler.bind(this);
         // this.saveTeamsHandler = this.saveTeamsHandler.bind(this);
     }
 
     teamSelectHandler(teamShort, matchup) {
-        // let search = this.state.eastTeams;
-        // const conferenceLetter = matchup.slice(0,1);
-        // if (conferenceLetter === "w") {
-        //     search = this.state.westTeams;
-        // }
 
         let teams = this.state.teams.filter((team) => {
 
@@ -57,9 +53,9 @@ export default class QualifyingRound extends Component {
                         <li>
                             <span className="scoring">Scoring: </span> 
                             <span className="num">1 point</span> for each correct pick, and &nbsp;
-                            <span className="num">1 bonus point</span> for picking an&nbsp;
-                            <div className="seed inline-seed">11</div> or&nbsp;
-                            <div className="seed inline-seed">12</div> seed upset.
+                            <span className="num">1 bonus point</span> for picking a&nbsp;
+                            <div className="seed inline-seed">7</div> or&nbsp;
+                            <div className="seed inline-seed">8</div> seed upset.
                         </li>
                     </ul>
                 </div>

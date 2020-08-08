@@ -19,13 +19,14 @@ class App extends Component {
     saveStatus: null,
     saveMessage: null,
     club: null,
-    user: null
+    user: null,
+    userPicks: null
   }
 
   componentDidMount() {
     let user = this.getCookie("user");
     this.setState({user: user});
-    this.getTeams();
+    this.getUserPicks();
     console.log("state: " + JSON.stringify(this.state, null, 4))
   }
 
@@ -38,15 +39,14 @@ class App extends Component {
     .then(data => this.setState({currentTime: data.time}));
   }
 
-  getTeams = () => {
-    fetch('/api/get_teams', {
+  getUserPicks = () => {
+    fetch('/api/user_picks', {
       method: 'GET',
     })
     .then(results => results.json())
     .then(data => this.setState(
         {
-          byeTeams: data.bye_teams,
-          qualifyingTeams: data.qualifying_teams
+          userPicks: data.picks
         }
       )
     );
@@ -185,16 +185,80 @@ class App extends Component {
           className="left-aside"
           image={hockeyIcon}
         />
-        <ul>
+        <h2>Leaderboard</h2>
+        <ul className="leaders">
+          <li>
+            <div>L8on</div>
+            <div> 7</div>
+          </li>
+          <li>
+            <div>randomBoys3434</div>
+            <div> 5</div>
+          </li>
+          <li>
+            <div>Paul</div>
+            <div> 4</div>
+          </li>
+          <li>
+            <div>bryan</div>
+            <div> 4</div>
+          </li>
+          <li>
+            <div>Dave</div>
+            <div> 3</div>
+          </li>
+          <li>
+            <div>Eric B</div>
+            <div> 1</div>
+          </li>
+          <li>
+            <div>James</div>
+            <div> 1</div>
+          </li>
+          <li>
+            <div>jwassink</div>
+            <div> 1</div>
+          </li>
+          <li>
+            <div>Adam Green</div>
+            <div> 1</div>
+          </li>
+          <li>
+            <div>Aron</div>
+            <div> 1</div>
+          </li>
+        </ul>
+        <h2>Full Results</h2>
+
+        <ul class="leaderboard">
           <Leaderboard
-            byeTeams={this.state.byeTeams}
-            qualifyingTeams={this.state.qualifyingTeams}
-          ></Leaderboard>
+            // byeTeams={this.state.byeTeams}
+            // qualifyingTeams={this.state.qualifyingTeams}
+            user={this.state.user}
+            userPicks={this.state.userPicks}
+          />
         </ul>
         {/* <QualifyingRound 
           saveQualifiers={this.saveQualifyingTeamsToState}
           qualifyingTeamsStatus={this.state.qualifyingTeamsStatus}
-        />
+        /> */}
+        <div className="display-none">
+          <Input 
+            type="text"
+            nameChanged={this.nameChangeHandler}
+            nameStatus={this.state.nameStatus}
+            user={this.state.user}
+          />
+        </div>
+        {/* <Button 
+          name = {this.state.user}
+          // save = {this.saveToDB}
+          nameStatus = {this.state.nameStatus}
+          label="Submit picks"
+          saveStatus = {this.state.saveStatus}
+          saveMessage = {this.state.saveMessage}
+        />  */}
+        {/* 
         <ByeTeams 
           saveByes= {this.saveByesToState}
           byeStatus={this.state.byeStatus}
