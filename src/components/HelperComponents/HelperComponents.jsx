@@ -99,7 +99,8 @@ export function Input(props) {
                     id="input"
                     type="name"
                     placeholder="name / username"
-                    // defaultValue={props.user}
+                    // value=""
+                    defaultValue={props.user}
                     onChange={(event) => nameChangeHandler(event)}
                     required={true}
                 />&nbsp;
@@ -115,7 +116,7 @@ export function Input(props) {
                 <input 
                     type="name"
                     placeholder="name / username"
-                    value={props.user}
+                    value=""
                     onChange={(event) => nameChangeHandler(event)}
                 />&nbsp;
                 {/* <Message

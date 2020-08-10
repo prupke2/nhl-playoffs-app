@@ -33,7 +33,9 @@ export default class QualifyingRound extends Component {
 
         let saveQualifiers = this.props.saveQualifiers;
         saveQualifiers(this.state);
-        console.log("state: " + JSON.stringify(this.state, null, 4))
+        // console.log("state: " + JSON.stringify(this.state, null, 4))
+        // console.log("this.state.user: " + this.state.user);
+
     }
 
     render() {
@@ -47,8 +49,7 @@ export default class QualifyingRound extends Component {
                             <span className="scoring">Scoring: </span> 
                             <span className="num">1 point</span> for each correct pick, and &nbsp;
                             <span className="num">1 bonus point</span> for picking a&nbsp;
-                            <div className="seed inline-seed">7</div> or&nbsp;
-                            <div className="seed inline-seed">8</div> seed upset.
+                            <div className="seed inline-seed">7</div> or lower seed upset.
                         </li>
                     </ul>
                 </div>

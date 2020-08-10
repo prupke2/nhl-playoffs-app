@@ -28,10 +28,12 @@ class App extends Component {
 
   componentDidMount() {
     let user = this.getCookie("user");
-    this.setState({user: user});
+    if (this.state.user === null) {
+      this.setState({user: user})
+    }
     this.getLeaders();
     this.getUserPicks();
-    console.log("state: " + JSON.stringify(this.state, null, 4))
+    // console.log("state: " + JSON.stringify(this.state, null, 4))
   }
 
   // function to test the api quickly
@@ -70,7 +72,7 @@ class App extends Component {
   checkIfReady = (check) => {
     let user = this.getCookie("user");
     this.setState({user: user});
-    
+
     let count = 0;
 
     if (check === "qualifyingTeams") {
@@ -126,11 +128,10 @@ class App extends Component {
       this.setState( {
         nameStatus: null
       })
-      return
     }
 
     this.setState( {
-      name: name
+      user: name
     }, () => {
       if (name !== null) {
         this.setState({nameStatus: "available"});
@@ -143,7 +144,7 @@ class App extends Component {
       method: 'POST',
       body: JSON.stringify(
         { 
-          name: this.state.name,
+          name: this.state.user,
           picks: this.state.qualifyingTeams
         }
       )
