@@ -31,9 +31,9 @@ export function Button(props) {
     }
 
     if (
-        props.byeTeamsStatus === "ready" 
-        && props.qualifyingTeamsStatus === "ready" 
-        && props.nameStatus === "available"
+        // props.byeTeamsStatus === "ready" 
+        props.qualifyingTeamsStatus === "ready" 
+        // && props.nameStatus === "available"
         && props.saveStatus !== "saved"
         ) {
         return (
@@ -80,13 +80,14 @@ export function Message(props) {
         console.log("props.saveStatus: " + props.saveStatus + ", props.saveMessage: " + props.saveMessage);
     }
     return (
-        <span className={`status ${props.status} ${props.saveStatus}`}>
+        <div className={`status ${props.status} ${props.saveStatus}`}>
             {message} {props.saveMessage}
-        </span>
+        </div>
     );
 }
 
 export function Input(props) {
+
     const nameChangeHandler = (event) => {
         let updateName = props.nameChanged;
         updateName(event.target.value);
@@ -95,15 +96,16 @@ export function Input(props) {
         return (
             <div className="name-input">
                 <input 
+                    id="input"
                     type="name"
                     placeholder="name / username"
-                    value={props.user}
+                    // defaultValue={props.user}
                     onChange={(event) => nameChangeHandler(event)}
-                    disabled="True"
+                    required={true}
                 />&nbsp;
-                {/* <Message
+                <Message
                     status={props.nameStatus}
-                /> */}
+                />
             </div>
         );
     } else {

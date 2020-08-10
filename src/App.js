@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import hockeyIcon from './assets/hockey_icon_large.png';
 import ByeTeams from './components/ByeTeams/ByeTeams';
 import QualifyingRound from './components/QualifyingRound/QualifyingRound';
-import Results from './components/Leaderboard/Results';
+import Results from './components/Results/Results';
 import Leaderboard from './components/Leaderboard/Leaderboard';
 import { Sidebar, Button, Input, Footer } from './components/HelperComponents/HelperComponents';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -12,7 +12,7 @@ import 'react-tabs/style/react-tabs.css';
 class App extends Component {
 
   state = {
-    byeTeamsStatus: "not_ready",
+    byeTeamsStatus: "ready",
     byeTeams: null,
     qualifyingTeamsStatus: "not_ready",
     qualifyingTeams: null,
@@ -40,7 +40,7 @@ class App extends Component {
       method: 'GET',
     })
     .then(results => results.json())
-    .then(data => this.setState({currentTime: data.time}));
+    .then(data => this.setState({ currentTime: data.time }));
   }
 
   getLeaders = () => {
@@ -48,7 +48,7 @@ class App extends Component {
       method: 'GET',
     })
     .then(results => results.json())
-    .then(data => this.setState({leaders: data.leaders}));
+    .then(data => this.setState({ leaders: data.leaders }));
   }
 
   getUserPicks = () => {
@@ -56,12 +56,7 @@ class App extends Component {
       method: 'GET',
     })
     .then(results => results.json())
-    .then(data => this.setState(
-        {
-          userPicks: data.picks
-        }
-      )
-    );
+    .then(data => this.setState({ userPicks: data.picks }));
   }
 
   checkIfNameIsTaken = (name) => {
@@ -69,10 +64,13 @@ class App extends Component {
       method: 'GET',
     })
     .then(results => results.json())
-    .then(data => this.setState({nameStatus: data.status}))
+    .then(data => this.setState({ nameStatus: data.status }));
   }
 
   checkIfReady = (check) => {
+    let user = this.getCookie("user");
+    this.setState({user: user});
+    
     let count = 0;
 
     if (check === "qualifyingTeams") {
@@ -140,6 +138,20 @@ class App extends Component {
     });
   }
 
+  saveRound2 = () => {
+    fetch('/api/save_round2', {
+      method: 'POST',
+      body: JSON.stringify(
+        { 
+          name: this.state.name,
+          picks: this.state.qualifyingTeams
+        }
+      )
+    })
+    .then(results => results.json())
+    .then(data => this.setState({saveStatus: data.status, saveMessage: data.message}))
+  }
+
   saveToDB = () => {
     let club = this.getRequests().club;
     this.setCookie("club", club);
@@ -189,31 +201,48 @@ class App extends Component {
         <section>
           <h1>2020 NHL Playoff Pool</h1>
         </section>
-        {/* <ul>
-          <li>Select your picks in two minutes.</li>
-          <li>No signup required.</li>
-        </ul> */}
         <Sidebar 
           className="left-aside"
           image={hockeyIcon}
         />
         <div className = "greeting">
           { this.state.user === null ? "" : "Hey " + this.state.user +  
-            ", it's almost time to enter your picks for round 2!"
+            ", it's time to enter your picks for round 2!"
           }
-          <br />
-          
         </div>
 
         <Tabs>
           <TabList>
             <div>
+                <Tab><div className="tab">Round 2</div></Tab>
                 <Tab><div className="tab">Leaderboard</div></Tab>
                 <Tab><div className="tab">Full Results</div></Tab>
-                {/* <Tab><div className="tab">Round 2</div></Tab> */}
             </div>
           </TabList>
 
+          <TabPanel>
+            <h2>Conference Quarterfinals</h2>
+
+            <QualifyingRound 
+              saveQualifiers={this.saveQualifyingTeamsToState}
+              qualifyingTeamsStatus={this.state.qualifyingTeamsStatus}
+            />
+            <Input 
+              type="text"
+              nameChanged={this.nameChangeHandler}
+              nameStatus={this.state.nameStatus}
+              user={this.state.user}
+            />
+            <Button 
+              name = {this.state.user}
+              save = {this.saveRound2}
+              nameStatus = {this.state.nameStatus}
+              qualifyingTeamsStatus = {this.state.qualifyingTeamsStatus}
+              label="Submit picks"
+              saveStatus = {this.state.saveStatus}
+              saveMessage = {this.state.saveMessage}
+            /> 
+          </TabPanel>   
           <TabPanel>
             <ul className="leaders">
               <Leaderboard 
@@ -231,37 +260,9 @@ class App extends Component {
                 userPicks={this.state.userPicks}
               />
             </ul>
-          </TabPanel>
-          {/* <TabPanel>
-              <QualifyingRound
-                // byeTeams={this.state.byeTeams}
-                // qualifyingTeams={this.state.qualifyingTeams}
-                user={this.state.user}
-                userPicks={this.state.userPicks}
-              />
-          </TabPanel>           */}
+          </TabPanel>       
         </Tabs>
 
-        {/* <QualifyingRound 
-          saveQualifiers={this.saveQualifyingTeamsToState}
-          qualifyingTeamsStatus={this.state.qualifyingTeamsStatus}
-        /> */}
-        <div className="display-none">
-          <Input 
-            type="text"
-            nameChanged={this.nameChangeHandler}
-            nameStatus={this.state.nameStatus}
-            user={this.state.user}
-          />
-        </div>
-        {/* <Button 
-          name = {this.state.user}
-          // save = {this.saveToDB}
-          nameStatus = {this.state.nameStatus}
-          label="Submit picks"
-          saveStatus = {this.state.saveStatus}
-          saveMessage = {this.state.saveMessage}
-        />  */}
         {/* 
         <ByeTeams 
           saveByes= {this.saveByesToState}

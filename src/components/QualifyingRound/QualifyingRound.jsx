@@ -33,20 +33,13 @@ export default class QualifyingRound extends Component {
 
         let saveQualifiers = this.props.saveQualifiers;
         saveQualifiers(this.state);
-
+        console.log("state: " + JSON.stringify(this.state, null, 4))
     }
-
-    // saveTeamsHandler = (event) => {
-    //     let saveQualifiers = this.props.saveQualifiers;
-    //     console.log("STATE: " + JSON.stringify(this.state, null, 4))
-    //     saveQualifiers(this.state);
-    // }
 
     render() {
 
         return (
             <React.Fragment>
-                <h2>Qualifying Round</h2>
                 <div className="instructions">
                     <ul>
                         <li>For each matchup, click on the team you think will win.</li>
@@ -65,12 +58,14 @@ export default class QualifyingRound extends Component {
                         <h3 className="header align-left" id="east-matchups">east matchups</h3>
 
                         <ul className="matchups">
-                            { React.Children.toArray(
-                                <Matchups
-                                    teams={this.state}
-                                    teamSelectHandler={this.teamSelectHandler}
-                                ></Matchups>
-                            )}
+                            { 
+                                React.Children.toArray(
+                                    <Matchups
+                                        teams={this.state}
+                                        teamSelectHandler={this.teamSelectHandler}
+                                    ></Matchups>
+                                )
+                            }
                         </ul>
                     </div>
 

@@ -4,8 +4,8 @@
 			{
 					"id": "e1",
 					"conference": "east",
-					"name": "Pittsburgh Penguins",
-					"short": "PIT",
+					"name": "Philadelphia Flyers",
+					"short": "PHI",
 					"seed": 1,
 					"matchup": "e1",
 					"selected": null
@@ -15,15 +15,15 @@
 					"conference": "east",
 					"name": "Montreal Canadiens",
 					"short": "MTL",
-					"seed": 8,
+					"seed": 12,
 					"matchup": "e1",
 					"selected": null
 			},          
 			{
 					"id": "e2",
 					"conference": "east",
-					"name": "Carolina Hurricanes",
-					"short": "CAR",
+					"name": "Washington Capitals",
+					"short": "WSH",
 					"seed": 2,
 					"matchup": "e2",
 					"selected": null
@@ -31,8 +31,8 @@
 			{
 					"id": "e7",
 					"conference": "east",
-					"name": "New York Rangers",
-					"short": "NYR",
+					"name": "New York Islanders",
+					"short": "NYI",
 					"seed": 7,
 					"matchup": "e2",
 					"selected": null
@@ -40,8 +40,8 @@
 			{
 					"id": "3",
 					"conference": "east",
-					"name": "New York Islanders",
-					"short": "NYI",
+					"name": "Boston Bruins",
+					"short": "BOS",
 					"seed": 3,
 					"matchup": "e3",
 					"selected": null
@@ -49,8 +49,8 @@
 			{
 					"id": "e6",
 					"conference": "east",
-					"name": "Florida Panthers",
-					"short": "FLA",
+					"name": "Carolina Hurricanes",
+					"short": "CAR",
 					"seed": 6,
 					"matchup": "e3",
 					"selected": null
@@ -58,8 +58,8 @@
 			{
 					"id": "e4",
 					"conference": "east",
-					"name": "Toronto Maple Leafs",
-					"short": "TOR",
+					"name": "Tampa Bay Lightning",
+					"short": "TBL",
 					"seed": 4,
 					"matchup": "e4",
 					"selected": null
@@ -69,15 +69,15 @@
 					"conference": "east",
 					"name": "Columbus Blue Jackets",
 					"short": "CBJ",
-					"seed": 5,
+					"seed": 9,
 					"matchup": "e4",
 					"selected": null
 			},
 			{
 					"id": "w1",
 					"conference": "west",
-					"name": "Edmonton Oilers",
-					"short": "EDM",
+					"name": "Vegas Golden Knights",
+					"short": "VGK",
 					"seed": 1,
 					"matchup": "w1",
 					"selected": null
@@ -87,15 +87,15 @@
 					"conference": "west",
 					"name": "Chicago Blackhalks",
 					"short": "CHI",
-					"seed": 8,
+					"seed": 12,
 					"matchup": "w1",
 					"selected": null
 			},
 			{
 					"id": "w2",
 					"conference": "west",
-					"name": "Nashville Predators",
-					"short": "NSH",
+					"name": "Colorado Avalanche",
+					"short": "COL",
 					"seed": 2,
 					"matchup": "w2",
 					"selected": null
@@ -105,15 +105,15 @@
 					"conference": "west",
 					"name": "Arizona Coyotes",
 					"short": "ARI",
-					"seed": 7,
+					"seed": 11,
 					"matchup": "w2",
 					"selected": null
 			},        
 			{
 					"id": "w3",
 					"conference": "west",
-					"name": "Vancouver Canucks",
-					"short": "VAN",
+					"name": "Dallas Stars",
+					"short": "DAL",
 					"seed": 3,
 					"matchup": "w3",
 					"selected": null
@@ -121,17 +121,17 @@
 			{
 					"id": "w6",
 					"conference": "west",
-					"name": "Minnesota Wild",
-					"short": "MIN",
-					"seed": 6,
+					"name": "Calgary Flames",
+					"short": "CGY",
+					"seed": 8,
 					"matchup": "w3",
 					"selected": null
 			},
 			{
 					"id": "w4",
 					"conference": "west",
-					"name": "Calgary Flames",
-					"short": "CGY",
+					"name": "St. Louis Blues",
+					"short": "STL",
 					"seed": 4,
 					"matchup": "w4",
 					"selected": null
@@ -139,9 +139,9 @@
 			{
 					"id": "w5",
 					"conference": "west",
-					"name": "Winnipeg Jets",
-					"short": "WPG",
-					"seed": 5,
+					"name": "Vancouver Canucks",
+					"short": "VAN",
+					"seed": 7,
 					"matchup": "w4",
 					"selected": null
 			}

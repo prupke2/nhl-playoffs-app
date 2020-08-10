@@ -1,5 +1,6 @@
 .qualifying-round {
-    width: 60vw;
+    margin: 20px auto;
+    width: 40vw;
     height: 900px;
     display: flex;
     flex-wrap: wrap;
@@ -16,18 +17,19 @@
 
 .matchups .east {
     position: relative;
-    left: 50vw;
+    left: 30vw;
     top: -77px;
 }
 
 .matchups .west {
     position: relative;
-    top: -925px;
+    /* left: -5vw; */
+    top: -919px;
 }
 
 #east-matchups {
     position: relative;
-    left: 50vw;
+    left: 30vw;
     top: -70px;
 }
 
