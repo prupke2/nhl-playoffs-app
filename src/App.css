@@ -34,7 +34,7 @@ main {
   grid-template-columns: minmax(100%, 10%);
   text-align: center;
   font-family: 'Karla', 'Rubik', sans-serif;
-  position: relative;
+  /* position: relative; */
   min-width: 300px;
   margin: 0 auto;
   padding: 0;
@@ -79,6 +79,14 @@ h3 {
   width: auto;
 }
 
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
 .footer {
   background-color: var(--alt-bg-opaque);
   height: 70px;
@@ -112,6 +120,14 @@ h3 {
   border-radius: 4px;
   font-weight: bold;
   letter-spacing: 1.5px;
+}
+
+.react-tabs__tab-panel {
+  min-height: 100vh;
+}
+
+.small-tab {
+  font-size: 0.9rem;
 }
 
 .instructions {

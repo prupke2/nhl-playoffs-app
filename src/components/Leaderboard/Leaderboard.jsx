@@ -9,7 +9,7 @@ export default class Leaderboard extends Component {
 				this.props.leaders.map(
           (team, index) => {
 						return (
-              <li>
+              <li key={index}>
                 <div>{team.name}</div>
                 <div>{team.points}</div>
               </li>

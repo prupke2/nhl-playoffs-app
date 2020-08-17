@@ -1,0 +1,98 @@
+/* .matchup-wrapper {
+  position: relative;
+  width: 98vw;
+  margin: 0 auto;
+  display: flex;
+} */
+
+.matchup-wrapper > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.matchup-wrapper .logo-wrapper {
+  padding: 5px 15px;
+  background-color: var(--alt-bg);
+  color: white;
+}
+
+li.null {
+  outline: 5px solid transparent;
+  cursor: pointer;
+}
+
+li.true {
+  outline: 5px solid var(--eligible);
+  border: 2px solid transparent !important;
+}
+
+li.false {
+  outline: 5px solid transparent;
+  border: 4px solid transparent !important;
+  filter: contrast(60%);
+  cursor: pointer;
+}
+
+.qualifying-round {
+  margin: 20px auto;
+  width: 40vw;
+  height: 900px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.matchups {
+  width: 140px;
+  height: 110px;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+}
+
+.matchups .east {
+  position: relative;
+  left: 30vw;
+  top: -77px;
+}
+
+.matchups .west {
+  position: relative;
+  top: -499px;
+  left: -30vw;
+}
+
+#east-matchups {
+  position: relative;
+  left: 30vw;
+  top: -70px;
+}
+
+#west-matchups {
+  position: relative;
+  left: -30vw;
+}
+
+.matchups li:nth-child(2n-1) {
+  border: 4px solid var(--alt-bg);
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.matchups li:nth-child(2n) {
+  border: 4px solid var(--alt-bg);
+  border-top: none;
+  margin-bottom: 50px;
+  background-color: white;
+}
+
+.inline-seed {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.round-2 {
+  left: 10vw;
+}

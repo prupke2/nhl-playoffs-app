@@ -4,10 +4,16 @@ import ByeTeams from './components/ByeTeams/ByeTeams';
 import QualifyingRound from './components/QualifyingRound/QualifyingRound';
 import Results from './components/Results/Results';
 import Leaderboard from './components/Leaderboard/Leaderboard';
+import SemiFinals from './components/SemiFinals/SemiFinals';
 import { Sidebar, Button, Input, Footer } from './components/HelperComponents/HelperComponents';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './App.css';
 import 'react-tabs/style/react-tabs.css';
+import MatchupWrapper from './components/MatchupWrapper/MatchupWrapper';
+import MatchupInstructions from './components/MatchupWrapper/MatchupInstructions/MatchupInstructions';
+import conferenceSemiFinals from './assets/semiFinalRoundData.json';
+import qualifyingTeams from './assets/qualifyingRoundData.json';
+
 
 class App extends Component {
 
@@ -16,6 +22,7 @@ class App extends Component {
     byeTeams: null,
     qualifyingTeamsStatus: "not_ready",
     qualifyingTeams: null,
+    teams: null,
     name: null,
     nameStatus: null,
     saveStatus: null,
@@ -23,7 +30,8 @@ class App extends Component {
     club: null,
     leaders: null,
     user: null,
-    userPicks: null
+    userPicks: null,
+    quarterfinalPicks: null,
   }
 
   componentDidMount() {
@@ -33,8 +41,11 @@ class App extends Component {
     }
     this.getLeaders();
     this.getUserPicks();
+    this.getQuarterfinalPicks();
     // console.log("state: " + JSON.stringify(this.state, null, 4))
   }
+
+
 
   // function to test the api quickly
   getTime = () => {
@@ -61,6 +72,14 @@ class App extends Component {
     .then(data => this.setState({ userPicks: data.picks }));
   }
 
+  getQuarterfinalPicks = () => {
+    fetch('/api/quarterfinal_picks', {
+      method: 'GET',
+    })
+    .then(results => results.json())
+    .then(data => this.setState({ quarterfinalPicks: data.picks }));
+  }
+  
   checkIfNameIsTaken = (name) => {
     fetch('/names/' + name, {
       method: 'GET',
@@ -84,7 +103,7 @@ class App extends Component {
       if (count >= 8) {
         this.setState({qualifyingTeamsStatus: "ready"});
       }
-    } else {
+    } else if (check === "byeTeams") {
       for (let i=1; i < 8; i++) {
         if ((this.state.byeTeams[i].type === "east") || (this.state.byeTeams[i].type === "west")) {
           this.setState({byeTeamsStatus: "not_ready"});
@@ -94,6 +113,16 @@ class App extends Component {
       if (count === 0) {
         this.setState({byeTeamsStatus: "ready"});
       }
+    } else {
+        // conferenceSemiFinals
+        for (let i=0; i < 4; i++) {
+          if (this.state.teams[i].selected === true) {
+            count += 1
+          }
+        }
+        if (count >= 4) {
+          this.setState({qualifyingTeamsStatus: "ready"});
+        }
     }
   }
 
@@ -111,6 +140,15 @@ class App extends Component {
     }, () => {
       this.checkIfReady("qualifyingTeams");
     });    
+  }
+
+  saveConferenceSemiFinalsToState = (teams) => {
+    this.setState({
+      teams: teams.teams
+    }, () => {
+      console.log("App.js state.teams: " + JSON.stringify(this.state.teams, null, 4))
+      this.checkIfReady("conferenceSemiFinals")
+    });
   }
 
   getRequests = () => {
@@ -202,26 +240,29 @@ class App extends Component {
         <section>
           <h1>2020 NHL Playoff Pool</h1>
         </section>
-        <Sidebar 
+        {/* <Sidebar 
           className="left-aside"
           image={hockeyIcon}
-        />
+        /> */}
         <div className = "greeting">
-          { this.state.user === null ? "" : "Hey " + this.state.user +  
+          {/* { this.state.user === null ? "" : "Hey " + this.state.user +  
             ", it's time to enter your picks for round 2!"
-          }
+          } */}
+          Round 2 entry is now closed. 
         </div>
 
-        <Tabs>
+        <Tabs defaultIndex={0}>
           <TabList>
             <div>
-                <Tab><div className="tab">Round 2</div></Tab>
-                <Tab><div className="tab">Leaderboard</div></Tab>
-                <Tab><div className="tab">Full Results</div></Tab>
+              <Tab><div className="tab">Matchup wrapper</div></Tab>
+              <Tab><div className="tab">Matchup test</div></Tab>
+              <Tab><div className="tab">Round 3</div></Tab>
+              <Tab><div className="tab">Leaderboard</div></Tab>
+              <Tab><div className="tab">Full Results</div></Tab>
             </div>
           </TabList>
 
-          <TabPanel>
+          {/* <TabPanel>
             <h2>Conference Quarterfinals</h2>
 
             <QualifyingRound 
@@ -243,7 +284,57 @@ class App extends Component {
               saveStatus = {this.state.saveStatus}
               saveMessage = {this.state.saveMessage}
             /> 
-          </TabPanel>   
+          </TabPanel>    */}
+          <TabPanel>
+            <h2>Matchup</h2>
+            <MatchupInstructions 
+            />
+            <MatchupWrapper
+              saveTeams={this.saveConferenceSemiFinalsToState}
+              teamData = {conferenceSemiFinals}
+              round = {1}
+            >
+            </MatchupWrapper>
+            <MatchupWrapper
+              saveTeams={this.saveConferenceSemiFinalsToState}
+              teamData = {conferenceSemiFinals}
+              round = {2}
+            >
+            </MatchupWrapper>
+            <Input 
+              type="text"
+              nameChanged={this.nameChangeHandler}
+              nameStatus={this.state.nameStatus}
+              user={this.state.user}
+            />
+            <Button 
+              name = {this.state.user}
+              save = {this.saveRound2}
+              nameStatus = {this.state.nameStatus}
+              qualifyingTeamsStatus = {this.state.qualifyingTeamsStatus}
+              label="Submit picks"
+              saveStatus = {this.state.saveStatus}
+              saveMessage = {this.state.saveMessage}
+            /> 
+          </TabPanel>
+          <TabPanel>
+            <h2>Matchup test</h2>
+            <MatchupWrapper
+              saveTeams={this.saveConferenceSemiFinalsToState}
+              teamData = {qualifyingTeams}
+              columns = {3}
+            >
+            </MatchupWrapper>
+          </TabPanel>
+          <TabPanel>
+            <h2>Conference Semifinals</h2>
+
+            <SemiFinals
+              saveConferenceSemiFinals={this.saveConferenceSemiFinalsToState}
+              qualifyingTeamsStatus={this.state.qualifyingTeamsStatus}
+            >
+            </SemiFinals>
+          </TabPanel>
           <TabPanel>
             <ul className="leaders">
               <Leaderboard 
@@ -259,6 +350,7 @@ class App extends Component {
                 // qualifyingTeams={this.state.qualifyingTeams}
                 user={this.state.user}
                 userPicks={this.state.userPicks}
+                quarterfinalPicks={this.state.quarterfinalPicks}
               />
             </ul>
           </TabPanel>       
@@ -285,9 +377,9 @@ class App extends Component {
           saveStatus = {this.state.saveStatus}
           saveMessage = {this.state.saveMessage}
         /> */}
-        <Sidebar 
+        {/* <Sidebar 
           className="right-aside"
-        />
+        /> */}
         <Footer />
       </main>
     );

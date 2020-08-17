@@ -1,0 +1,85 @@
+{
+  "teams":
+  [
+      {
+          "id": "e1",
+          "conference": "east",
+          "name": "Pittsburgh Penguins",
+          "short": "PIT",
+          "seed": 1,
+          "matchup": "e1",
+          "selected": null,
+          "round": 1
+      },      
+      {
+          "id": "e5",
+          "conference": "east",
+          "name": "Montreal Canadiens",
+          "short": "MTL",
+          "seed": 5,
+          "matchup": "e1",
+          "selected": null,
+          "round": 1
+      },          
+      {
+          "id": "e2",
+          "conference": "east",
+          "name": "Carolina Hurricanes",
+          "short": "CAR",
+          "seed": 2,
+          "matchup": "e2",
+          "selected": null,
+          "round": 1
+      },
+      {
+          "id": "e3",
+          "conference": "east",
+          "name": "New York Rangers",
+          "short": "NYR",
+          "seed": 3,
+          "matchup": "e2",
+          "selected": null,
+          "round": 1
+      },   
+      {
+          "id": "w5",
+          "conference": "west",
+          "name": "Edmonton Oilers",
+          "short": "EDM",
+          "seed": 1,
+          "matchup": "w1",
+          "selected": null,
+          "round": 1
+      },
+      {
+          "id": "w5",
+          "conference": "west",
+          "name": "Chicago Blackhalks",
+          "short": "CHI",
+          "seed": 5,
+          "matchup": "w1",
+          "selected": null,
+          "round": 1
+      },
+      {
+          "id": "w2",
+          "conference": "west",
+          "name": "Nashville Predators",
+          "short": "NSH",
+          "seed": 2,
+          "matchup": "w2",
+          "selected": null,
+          "round": 1
+      },
+      {
+          "id": "w3",
+          "conference": "west",
+          "name": "Arizona Coyotes",
+          "short": "ARI",
+          "seed": 3,
+          "matchup": "w2",
+          "selected": null,
+          "round": 1
+      }
+  ]
+}

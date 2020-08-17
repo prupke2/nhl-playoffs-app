@@ -11,11 +11,11 @@ export default class QualifierResults extends Component {
 					(team, index) => {
 						if (index % 10 === 0) {
 							return (
-							<li>
+							<li key={index}>
 								<h3 className="user-name">{team.user}</h3>
 								<div className="">
 										<div className="round-robin">East round robin:
-											<div class="points">
+											<div className="points">
 												{
 														(() => {
 																if (team.points === 0)
@@ -33,10 +33,10 @@ export default class QualifierResults extends Component {
 							)
 						} else if (index % 10 - 1 === 0) {
 							return (
-								<li>
+								<li key={index}>
 									<div className="">
 										<div className="round-robin">West round robin:
-											<div class="points">
+											<div className="points">
 												{
 													(() => {
 															if (team.points === 0)
@@ -57,14 +57,14 @@ export default class QualifierResults extends Component {
 							)
 						}	else {
 								return (
-									<li>
+									<li key={index}>
 										<div className="logo-wrapper team-points">	
 											<img className="team-logo" 
 													src={`/teamLogos/${team.team}.png`}
 													alt={team.team} 
 													title={team.team}
 											/>
-											<div class="points">
+											<div className="points">
 												{
 													(() => {
 															if (team.points === 0)

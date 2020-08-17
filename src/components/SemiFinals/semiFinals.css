@@ -1,0 +1,11 @@
+
+
+.semifinals .west {
+  position: relative;
+  top: -499px;
+}
+
+.semifinals .east {
+  position: relative;
+  right: 50vw;
+}

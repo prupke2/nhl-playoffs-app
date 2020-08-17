@@ -48,14 +48,6 @@ section {
     font-variant: small-caps;
 }
 
-.align-left {
-    text-align: left;
-}
-
-.align-right {
-    text-align: right;
-}
-
 .small-header {
     font-size: 1.2rem;
 }
