@@ -2,50 +2,51 @@
   "teams":
   [
       {
-          "id": "e1",
-          "conference": "east",
-          "name": "Pittsburgh Penguins",
-          "short": "PIT",
-          "seed": 1,
-          "matchup": "e1",
-          "selected": null,
-          "round": 1
-      },      
-      {
-          "id": "e5",
-          "conference": "east",
-          "name": "Montreal Canadiens",
-          "short": "MTL",
-          "seed": 5,
-          "matchup": "e1",
-          "selected": null,
-          "round": 1
-      },          
-      {
           "id": "e2",
           "conference": "east",
-          "name": "Carolina Hurricanes",
-          "short": "CAR",
+          "name": "Tampa Bay Lightning",
+          "short": "TBL",
           "seed": 2,
+          "matchup": "e1",
+          "selected": null,
+          "round": 1
+      }, 
+      {
+        "id": "e4",
+        "conference": "east",
+        "name": "Boston Bruins",
+        "short": "BOS",
+        "seed": 4,
+        "matchup": "e1",
+        "selected": null,
+        "round": 1
+    },     
+      {
+          "id": "e6",
+          "conference": "east",
+          "name": "New York Islanders",
+          "short": "NYI",
+          "seed": 6,
           "matchup": "e2",
           "selected": null,
           "round": 1
-      },
+      },          
+
       {
-          "id": "e3",
+          "id": "e1",
           "conference": "east",
-          "name": "New York Rangers",
-          "short": "NYR",
-          "seed": 3,
+          "name": "Philadelphia Flyers",
+          "short": "PHI",
+          "seed": 1,
           "matchup": "e2",
           "selected": null,
           "round": 1
       },   
       {
-          "id": "w5",
+          "id": "w1",
           "conference": "west",
-          "name": "Edmonton Oilers",
-          "short": "EDM",
+          "name": "Vegas Golden Knights",
+          "short": "VGK",
           "seed": 1,
           "matchup": "w1",
           "selected": null,
@@ -54,29 +55,29 @@
       {
           "id": "w5",
           "conference": "west",
-          "name": "Chicago Blackhalks",
-          "short": "CHI",
+          "name": "Vancouver Canucks",
+          "short": "VAN",
           "seed": 5,
           "matchup": "w1",
-          "selected": null,
-          "round": 1
-      },
-      {
-          "id": "w2",
-          "conference": "west",
-          "name": "Nashville Predators",
-          "short": "NSH",
-          "seed": 2,
-          "matchup": "w2",
           "selected": null,
           "round": 1
       },
       {
           "id": "w3",
           "conference": "west",
-          "name": "Arizona Coyotes",
-          "short": "ARI",
+          "name": "Dallas Stars",
+          "short": "DAL",
           "seed": 3,
+          "matchup": "w2",
+          "selected": null,
+          "round": 1
+      },
+      {
+          "id": "w2",
+          "conference": "west",
+          "name": "Colorado Avalanche",
+          "short": "COL",
+          "seed": 2,
           "matchup": "w2",
           "selected": null,
           "round": 1

@@ -8,7 +8,7 @@ export default class Matchups extends Component {
         var teamSelectHandler = this.props.teamSelectHandler;
 
         return this.props.teamData.teams.map((team, index) => {
-            if (this.props.round <= team.round)
+            // if (this.props.round <= team.round)
             return (
                 <li 
                     key={index} 
@@ -19,8 +19,6 @@ export default class Matchups extends Component {
                         <div className="seed">
                             {team.seed}
                         </div>
-                            
-                        <span>r {team.round}</span>
                         <img className="team-logo" 
                             draggable="false"
                             src={`/teamLogos/${team.short}.png`}

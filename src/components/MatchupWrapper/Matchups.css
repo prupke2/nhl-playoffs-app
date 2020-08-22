@@ -5,6 +5,10 @@
   display: flex;
 } */
 
+.matchup-wrapper {
+  margin: 100px auto;
+}
+
 .matchup-wrapper > div {
   display: flex;
   flex-direction: column;

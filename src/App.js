@@ -45,8 +45,6 @@ class App extends Component {
     // console.log("state: " + JSON.stringify(this.state, null, 4))
   }
 
-
-
   // function to test the api quickly
   getTime = () => {
     fetch('/api/time', {
@@ -115,7 +113,7 @@ class App extends Component {
       }
     } else {
         // conferenceSemiFinals
-        for (let i=0; i < 4; i++) {
+        for (let i=0; i < 8; i++) {
           if (this.state.teams[i].selected === true) {
             count += 1
           }
@@ -146,7 +144,7 @@ class App extends Component {
     this.setState({
       teams: teams.teams
     }, () => {
-      console.log("App.js state.teams: " + JSON.stringify(this.state.teams, null, 4))
+      console.log("App.js state: " + JSON.stringify(this.state, null, 4))
       this.checkIfReady("conferenceSemiFinals")
     });
   }
@@ -177,13 +175,13 @@ class App extends Component {
     });
   }
 
-  saveRound2 = () => {
-    fetch('/api/save_round2', {
+  saveRound = () => {
+    fetch('/api/save_round', {
       method: 'POST',
       body: JSON.stringify(
         { 
           name: this.state.user,
-          picks: this.state.qualifyingTeams
+          picks: this.state.teams
         }
       )
     })
@@ -254,8 +252,8 @@ class App extends Component {
         <Tabs defaultIndex={0}>
           <TabList>
             <div>
-              <Tab><div className="tab">Matchup wrapper</div></Tab>
-              <Tab><div className="tab">Matchup test</div></Tab>
+              {/* <Tab><div className="tab">Matchup wrapper</div></Tab>
+              <Tab><div className="tab">Matchup test</div></Tab> */}
               <Tab><div className="tab">Round 3</div></Tab>
               <Tab><div className="tab">Leaderboard</div></Tab>
               <Tab><div className="tab">Full Results</div></Tab>
@@ -285,7 +283,7 @@ class App extends Component {
               saveMessage = {this.state.saveMessage}
             /> 
           </TabPanel>    */}
-          <TabPanel>
+          {/* <TabPanel>
             <h2>Matchup</h2>
             <MatchupInstructions 
             />
@@ -309,7 +307,7 @@ class App extends Component {
             />
             <Button 
               name = {this.state.user}
-              save = {this.saveRound2}
+              save = {this.saveRound}
               nameStatus = {this.state.nameStatus}
               qualifyingTeamsStatus = {this.state.qualifyingTeamsStatus}
               label="Submit picks"
@@ -325,15 +323,37 @@ class App extends Component {
               columns = {3}
             >
             </MatchupWrapper>
-          </TabPanel>
+          </TabPanel> */}
           <TabPanel>
             <h2>Conference Semifinals</h2>
 
-            <SemiFinals
+            {/* <SemiFinals
               saveConferenceSemiFinals={this.saveConferenceSemiFinalsToState}
               qualifyingTeamsStatus={this.state.qualifyingTeamsStatus}
             >
-            </SemiFinals>
+            </SemiFinals> */}
+            <MatchupInstructions 
+            />
+            <MatchupWrapper
+              saveTeams={this.saveConferenceSemiFinalsToState}
+              teamData = {conferenceSemiFinals}
+              round = {1}
+            />
+            <Input 
+              type="text"
+              nameChanged={this.nameChangeHandler}
+              nameStatus={this.state.nameStatus}
+              user={this.state.user}
+            />
+            <Button 
+              name = {this.state.user}
+              save = {this.saveRound}
+              nameStatus = {this.state.nameStatus}
+              qualifyingTeamsStatus = {this.state.qualifyingTeamsStatus}
+              label="Submit picks"
+              saveStatus = {this.state.saveStatus}
+              saveMessage = {this.state.saveMessage}
+            /> 
           </TabPanel>
           <TabPanel>
             <ul className="leaders">
