@@ -9,9 +9,9 @@ export default function MatchupInstructions(props) {
           <li>For each matchup, click on the team you think will win.</li>
           <li>
               <span className="scoring">Scoring: </span> 
-              <span className="num">1 point</span> for each correct pick, and &nbsp;
-              <span className="num">1 bonus point</span> for picking a&nbsp;
-              <div className="seed inline-seed">7</div> or lower seed upset.
+              <span className="num">1 point</span> for each correct pick. &nbsp;
+              {/* <span className="num">1 bonus point</span> for picking a&nbsp; */}
+              {/* <div className="seed inline-seed">7</div> or lower seed upset. */}
           </li>
       </ul>
     </div>

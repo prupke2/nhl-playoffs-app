@@ -32,6 +32,7 @@ class App extends Component {
     user: null,
     userPicks: null,
     quarterfinalPicks: null,
+    semifinalPicks: null
   }
 
   componentDidMount() {
@@ -42,6 +43,7 @@ class App extends Component {
     this.getLeaders();
     this.getUserPicks();
     this.getQuarterfinalPicks();
+    this.getSemifinalPicks();
     // console.log("state: " + JSON.stringify(this.state, null, 4))
   }
 
@@ -78,6 +80,14 @@ class App extends Component {
     .then(data => this.setState({ quarterfinalPicks: data.picks }));
   }
   
+  getSemifinalPicks = () => {
+    fetch('/api/semifinal_picks', {
+      method: 'GET',
+    })
+    .then(results => results.json())
+    .then(data => this.setState({ semifinalPicks: data.picks }));
+  }
+
   checkIfNameIsTaken = (name) => {
     fetch('/names/' + name, {
       method: 'GET',
@@ -238,23 +248,22 @@ class App extends Component {
         <section>
           <h1>2020 NHL Playoff Pool</h1>
         </section>
-        {/* <Sidebar 
+        <Sidebar 
           className="left-aside"
           image={hockeyIcon}
-        /> */}
+        />
         <div className = "greeting">
           {/* { this.state.user === null ? "" : "Hey " + this.state.user +  
             ", it's time to enter your picks for round 2!"
           } */}
-          Round 2 entry is now closed. 
         </div>
 
-        <Tabs defaultIndex={0}>
+        <Tabs defaultIndex={1}>
           <TabList>
             <div>
               {/* <Tab><div className="tab">Matchup wrapper</div></Tab>
               <Tab><div className="tab">Matchup test</div></Tab> */}
-              <Tab><div className="tab">Round 3</div></Tab>
+              {/* <Tab><div className="tab">Round 3</div></Tab> */}
               <Tab><div className="tab">Leaderboard</div></Tab>
               <Tab><div className="tab">Full Results</div></Tab>
             </div>
@@ -324,14 +333,8 @@ class App extends Component {
             >
             </MatchupWrapper>
           </TabPanel> */}
-          <TabPanel>
+          {/* <TabPanel>
             <h2>Conference Semifinals</h2>
-
-            {/* <SemiFinals
-              saveConferenceSemiFinals={this.saveConferenceSemiFinalsToState}
-              qualifyingTeamsStatus={this.state.qualifyingTeamsStatus}
-            >
-            </SemiFinals> */}
             <MatchupInstructions 
             />
             <MatchupWrapper
@@ -354,7 +357,7 @@ class App extends Component {
               saveStatus = {this.state.saveStatus}
               saveMessage = {this.state.saveMessage}
             /> 
-          </TabPanel>
+          </TabPanel> */}
           <TabPanel>
             <ul className="leaders">
               <Leaderboard 
@@ -371,6 +374,7 @@ class App extends Component {
                 user={this.state.user}
                 userPicks={this.state.userPicks}
                 quarterfinalPicks={this.state.quarterfinalPicks}
+                semifinalPicks={this.state.semifinalPicks}
               />
             </ul>
           </TabPanel>       
@@ -397,9 +401,9 @@ class App extends Component {
           saveStatus = {this.state.saveStatus}
           saveMessage = {this.state.saveMessage}
         /> */}
-        {/* <Sidebar 
+        <Sidebar 
           className="right-aside"
-        /> */}
+        />
         <Footer />
       </main>
     );

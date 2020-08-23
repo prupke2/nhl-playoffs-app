@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import QualifierResults from './QualifierResults';
-import QuarterfinalResults from './QuarterfinalResults';
+import RoundResults from './RoundResults';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 export default class Leaderboard extends Component {
 
 	render() {
 		return (
-			<Tabs defaultIndex={1}>
+			<Tabs defaultIndex={2}>
 				<TabList>
 					<div>
 							<Tab><div className="tab small-tab">Qualifiers</div></Tab>
 							<Tab><div className="tab small-tab">Conf Quarterfinals</div></Tab>
+							<Tab><div className="tab small-tab">Conf Semifinals</div></Tab>
 					</div>
 				</TabList>
 
@@ -21,8 +22,13 @@ export default class Leaderboard extends Component {
 					/>
 				</TabPanel>
 				<TabPanel>
-					<QuarterfinalResults 
-						quarterfinalPicks = {this.props.quarterfinalPicks}
+					<RoundResults 
+						picks = {this.props.quarterfinalPicks}
+					/>
+				</TabPanel>
+				<TabPanel>
+					<RoundResults 
+						picks = {this.props.semifinalPicks}
 					/>
 				</TabPanel>
 			</Tabs>
