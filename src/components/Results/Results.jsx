@@ -24,12 +24,14 @@ export default class Leaderboard extends Component {
 				<TabPanel>
 					<RoundResults 
 						picks = {this.props.quarterfinalPicks}
+						picksPerUser = {8}
 					/>
 				</TabPanel>
 				<TabPanel>
 					<RoundResults 
 						picks = {this.props.semifinalPicks}
-					/>
+						picksPerUser = {4}
+						/>
 				</TabPanel>
 			</Tabs>
 		);

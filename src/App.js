@@ -263,7 +263,7 @@ class App extends Component {
             <div>
               {/* <Tab><div className="tab">Matchup wrapper</div></Tab>
               <Tab><div className="tab">Matchup test</div></Tab> */}
-              {/* <Tab><div className="tab">Round 3</div></Tab> */}
+              <Tab><div className="tab">Round 3</div></Tab>
               <Tab><div className="tab">Leaderboard</div></Tab>
               <Tab><div className="tab">Full Results</div></Tab>
             </div>
@@ -333,7 +333,7 @@ class App extends Component {
             >
             </MatchupWrapper>
           </TabPanel> */}
-          {/* <TabPanel>
+          <TabPanel>
             <h2>Conference Semifinals</h2>
             <MatchupInstructions 
             />
@@ -357,7 +357,7 @@ class App extends Component {
               saveStatus = {this.state.saveStatus}
               saveMessage = {this.state.saveMessage}
             /> 
-          </TabPanel> */}
+          </TabPanel>
           <TabPanel>
             <ul className="leaders">
               <Leaderboard 

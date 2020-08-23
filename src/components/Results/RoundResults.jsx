@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 // import './Leaderboard.css';
 
-export default class QualifierResults extends Component {
+export default class RoundResults extends Component {
 
   render() {
-		// console.log("props: " + JSON.stringify(this.props, null, 4))
+		console.log("props: " + JSON.stringify(this.props, null, 4))
 		if (this.props.picks !== null) {
 			return (
 				this.props.picks.map(
 					(team, index) => {
-            if (index % 8 === 0) {
+            if (index % this.props.picksPerUser === 0) {
 							return (
 							<li key={index}>
 								<h3 className="user-name">{team.name}</h3>
@@ -19,7 +19,7 @@ export default class QualifierResults extends Component {
                         alt={team.team} 
                         title={team.team}
                     />
-                    <div class="points">
+                    <div className="points">
                       {
                         (() => {
                             if (team.points === 0)
@@ -43,7 +43,7 @@ export default class QualifierResults extends Component {
                         alt={team.team} 
                         title={team.team}
                     />
-                    <div class="points">
+                    <div className="points">
                       {
                         (() => {
                             if (team.points === 0)
