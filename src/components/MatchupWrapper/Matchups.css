@@ -5,6 +5,23 @@
   display: flex;
 } */
 
+.cup-wrapper {
+  position: relative;
+}
+
+.cup {
+  position: absolute;
+  top: -180px;
+  left: 1vw;
+}
+
+.winner {
+  position: absolute;
+  left: 4vw;
+  max-height: 60px;
+  height: auto;
+}
+
 .matchup-wrapper {
   margin: 100px auto;
 }
@@ -23,6 +40,11 @@
 li.null {
   outline: 5px solid transparent;
   cursor: pointer;
+  min-height: 69px;
+}
+
+li.invisible {
+  opacity: 0;
 }
 
 li.true {
@@ -57,13 +79,24 @@ li.false {
 .matchups .east {
   position: relative;
   left: 30vw;
-  top: -77px;
+  top: -67px;
+}
+
+.matchup-finals.east {
+  left: 15vw !important;
+  top: -450px;
 }
 
 .matchups .west {
   position: relative;
-  top: -499px;
+  top: -285px;
   left: -30vw;
+}
+
+.matchup-finals.west {
+  position: relative;
+  left: -15vw !important;
+  top: -540px !important;
 }
 
 #east-matchups {
@@ -75,6 +108,10 @@ li.false {
 #west-matchups {
   position: relative;
   left: -30vw;
+}
+
+.matchups .west .round2 {
+  left: -5vw !important;
 }
 
 .matchups li:nth-child(2n-1) {

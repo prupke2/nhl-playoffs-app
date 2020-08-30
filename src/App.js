@@ -13,6 +13,7 @@ import MatchupWrapper from './components/MatchupWrapper/MatchupWrapper';
 import MatchupInstructions from './components/MatchupWrapper/MatchupInstructions/MatchupInstructions';
 import conferenceSemiFinals from './assets/semiFinalRoundData.json';
 import qualifyingTeams from './assets/qualifyingRoundData.json';
+import final4Teams from './assets/final4data.json';
 
 
 class App extends Component {
@@ -44,7 +45,6 @@ class App extends Component {
     this.getUserPicks();
     this.getQuarterfinalPicks();
     this.getSemifinalPicks();
-    // console.log("state: " + JSON.stringify(this.state, null, 4))
   }
 
   // function to test the api quickly
@@ -121,8 +121,7 @@ class App extends Component {
       if (count === 0) {
         this.setState({byeTeamsStatus: "ready"});
       }
-    } else {
-        // conferenceSemiFinals
+    } else if (check === "conferenceSemiFinals") {
         for (let i=0; i < 8; i++) {
           if (this.state.teams[i].selected === true) {
             count += 1
@@ -131,6 +130,16 @@ class App extends Component {
         if (count >= 4) {
           this.setState({qualifyingTeamsStatus: "ready"});
         }
+    } else {
+      // final 4
+      for (let i=0; i < 6; i++) {
+        if (this.state.teams[i].selected === true) {
+          count += 1
+        }
+      }
+      if (count >= 3) {
+        this.setState({qualifyingTeamsStatus: "ready"});
+      }
     }
   }
 
@@ -156,6 +165,15 @@ class App extends Component {
     }, () => {
       console.log("App.js state: " + JSON.stringify(this.state, null, 4))
       this.checkIfReady("conferenceSemiFinals")
+    });
+  }
+
+  saveTeamsToState = (teams) => {
+    this.setState({
+      teams: teams.teams
+    }, () => {
+      console.log("teams: " + JSON.stringify(this.state.teams, null, 4))
+      this.checkIfReady("final4")
     });
   }
 
@@ -258,12 +276,12 @@ class App extends Component {
           } */}
         </div>
 
-        <Tabs defaultIndex={1}>
+        <Tabs defaultIndex={0}>
           <TabList>
             <div>
               {/* <Tab><div className="tab">Matchup wrapper</div></Tab>
               <Tab><div className="tab">Matchup test</div></Tab> */}
-              <Tab><div className="tab">Round 3</div></Tab>
+              <Tab><div className="tab">Final 4</div></Tab>
               <Tab><div className="tab">Leaderboard</div></Tab>
               <Tab><div className="tab">Full Results</div></Tab>
             </div>
@@ -334,13 +352,14 @@ class App extends Component {
             </MatchupWrapper>
           </TabPanel> */}
           <TabPanel>
-            <h2>Conference Semifinals</h2>
+            <h2>Final 4</h2>
             <MatchupInstructions 
             />
             <MatchupWrapper
-              saveTeams={this.saveConferenceSemiFinalsToState}
-              teamData = {conferenceSemiFinals}
+              saveTeams={this.saveTeamsToState}
+              teamData = {final4Teams}
               round = {1}
+              cup = {true}
             />
             <Input 
               type="text"

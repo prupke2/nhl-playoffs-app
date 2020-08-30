@@ -1,0 +1,75 @@
+{
+  "teams":
+  [
+    {
+      "id": "e1",
+      "conference": "east",
+      "name": "Tampa Bay Lightning",
+      "short": "TBL",
+      "seed": 2,
+      "matchup": "e1",
+      "selected": null,
+      "round": 1
+    },    
+    {
+      "id": "e6",
+      "conference": "east",
+      "name": "New York Islanders",
+      "short": "NYI",
+      "seed": 6,
+      "matchup": "e1",
+      "selected": null,
+      "round": 1
+    },          
+    {
+      "id": "w1",
+      "conference": "west",
+      "name": "Vegas Golden Knights",
+      "short": "VGK",
+      "seed": 1,
+      "matchup": "w1",
+      "selected": null,
+      "round": 1
+    },
+    {
+      "id": "w3",
+      "conference": "west",
+      "name": "Dallas Stars",
+      "short": "DAL",
+      "seed": 3,
+      "matchup": "w1",
+      "selected": null,
+      "round": 1
+    },
+    {
+      "id": "ef",
+      "conference": "east",
+      "name": "",
+      "short": "",
+      "seed": null,
+      "matchup": "finals",
+      "selected": null,
+      "round": 2
+    },
+    {
+      "id": "wf",
+      "conference": "west",
+      "name": "",
+      "short": "",
+      "seed": null,
+      "matchup": "finals",
+      "selected": null,
+      "round": 2
+    },
+    {
+      "id": "winner",
+      "conference": "",
+      "name": "",
+      "short": "",
+      "seed": 2,
+      "matchup": "winner",
+      "selected": null,
+      "round": 3
+    }
+  ]
+}
