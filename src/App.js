@@ -47,15 +47,6 @@ class App extends Component {
     this.getSemifinalPicks();
   }
 
-  // function to test the api quickly
-  getTime = () => {
-    fetch('/api/time', {
-      method: 'GET',
-    })
-    .then(results => results.json())
-    .then(data => this.setState({ currentTime: data.time }));
-  }
-
   getLeaders = () => {
     fetch('/api/leaderboard', {
       method: 'GET',
