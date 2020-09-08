@@ -33,7 +33,8 @@ class App extends Component {
     user: null,
     userPicks: null,
     quarterfinalPicks: null,
-    semifinalPicks: null
+    semifinalPicks: null,
+    conferenceFinalPicks: null
   }
 
   componentDidMount() {
@@ -45,6 +46,7 @@ class App extends Component {
     this.getUserPicks();
     this.getQuarterfinalPicks();
     this.getSemifinalPicks();
+    this.getConferenceFinalPicks();
   }
 
   getLeaders = () => {
@@ -77,6 +79,14 @@ class App extends Component {
     })
     .then(results => results.json())
     .then(data => this.setState({ semifinalPicks: data.picks }));
+  }
+
+  getConferenceFinalPicks = () => {
+    fetch('/api/conferencefinal_picks', {
+      method: 'GET',
+    })
+    .then(results => results.json())
+    .then(data => this.setState({ conferenceFinalPicks: data.picks }));
   }
 
   checkIfNameIsTaken = (name) => {
@@ -154,7 +164,6 @@ class App extends Component {
     this.setState({
       teams: teams.teams
     }, () => {
-      console.log("App.js state: " + JSON.stringify(this.state, null, 4))
       this.checkIfReady("conferenceSemiFinals")
     });
   }
@@ -163,7 +172,6 @@ class App extends Component {
     this.setState({
       teams: teams.teams
     }, () => {
-      console.log("teams: " + JSON.stringify(this.state.teams, null, 4))
       this.checkIfReady("final4")
     });
   }
@@ -251,7 +259,6 @@ class App extends Component {
   }
 
   render() {
-    // console.log("state: " + JSON.stringify(this.state, null, 4))
     return (
       <main>
         <section>
@@ -261,87 +268,16 @@ class App extends Component {
           className="left-aside"
           image={hockeyIcon}
         />
-        <div className = "greeting">
-          {/* { this.state.user === null ? "" : "Hey " + this.state.user +  
-            ", it's time to enter your picks for round 2!"
-          } */}
-        </div>
 
-        <Tabs defaultIndex={0}>
+        <Tabs defaultIndex={2}>
           <TabList>
             <div>
-              {/* <Tab><div className="tab">Matchup wrapper</div></Tab>
-              <Tab><div className="tab">Matchup test</div></Tab> */}
               <Tab><div className="tab">Final 4</div></Tab>
               <Tab><div className="tab">Leaderboard</div></Tab>
               <Tab><div className="tab">Full Results</div></Tab>
             </div>
           </TabList>
 
-          {/* <TabPanel>
-            <h2>Conference Quarterfinals</h2>
-
-            <QualifyingRound 
-              saveQualifiers={this.saveQualifyingTeamsToState}
-              qualifyingTeamsStatus={this.state.qualifyingTeamsStatus}
-            />
-            <Input 
-              type="text"
-              nameChanged={this.nameChangeHandler}
-              nameStatus={this.state.nameStatus}
-              user={this.state.user}
-            />
-            <Button 
-              name = {this.state.user}
-              save = {this.saveRound2}
-              nameStatus = {this.state.nameStatus}
-              qualifyingTeamsStatus = {this.state.qualifyingTeamsStatus}
-              label="Submit picks"
-              saveStatus = {this.state.saveStatus}
-              saveMessage = {this.state.saveMessage}
-            /> 
-          </TabPanel>    */}
-          {/* <TabPanel>
-            <h2>Matchup</h2>
-            <MatchupInstructions 
-            />
-            <MatchupWrapper
-              saveTeams={this.saveConferenceSemiFinalsToState}
-              teamData = {conferenceSemiFinals}
-              round = {1}
-            >
-            </MatchupWrapper>
-            <MatchupWrapper
-              saveTeams={this.saveConferenceSemiFinalsToState}
-              teamData = {conferenceSemiFinals}
-              round = {2}
-            >
-            </MatchupWrapper>
-            <Input 
-              type="text"
-              nameChanged={this.nameChangeHandler}
-              nameStatus={this.state.nameStatus}
-              user={this.state.user}
-            />
-            <Button 
-              name = {this.state.user}
-              save = {this.saveRound}
-              nameStatus = {this.state.nameStatus}
-              qualifyingTeamsStatus = {this.state.qualifyingTeamsStatus}
-              label="Submit picks"
-              saveStatus = {this.state.saveStatus}
-              saveMessage = {this.state.saveMessage}
-            /> 
-          </TabPanel>
-          <TabPanel>
-            <h2>Matchup test</h2>
-            <MatchupWrapper
-              saveTeams={this.saveConferenceSemiFinalsToState}
-              teamData = {qualifyingTeams}
-              columns = {3}
-            >
-            </MatchupWrapper>
-          </TabPanel> */}
           <TabPanel>
             <h2>Final 4</h2>
             <MatchupInstructions 
@@ -379,12 +315,11 @@ class App extends Component {
           <TabPanel>
             <ul className="results">
               <Results
-                // byeTeams={this.state.byeTeams}
-                // qualifyingTeams={this.state.qualifyingTeams}
                 user={this.state.user}
                 userPicks={this.state.userPicks}
                 quarterfinalPicks={this.state.quarterfinalPicks}
                 semifinalPicks={this.state.semifinalPicks}
+                conferenceFinalPicks={this.state.conferenceFinalPicks}
               />
             </ul>
           </TabPanel>       

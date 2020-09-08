@@ -58,10 +58,8 @@ export default class ByeTeams extends Component {
 
         // if east is dragged into west (or vice versa), don't allow it to stay.
         if (draggedTeamConference !== droppedTeamConference) {
-            // console.log(draggedTeamConference + " does not match: " + droppedTeamConference);
             return;
         } else {
-            // console.log("type " + draggedTeamConference + " matches conference: " + droppedTeamConference);
             let teams;
 
             // if team was dropped from the byes area
@@ -85,13 +83,10 @@ export default class ByeTeams extends Component {
                 // cycle through the teams to update the dragged and dropped slot types
                 teams = this.state.byeSpots.teams.filter((team) => {
                     if (team.type === droppedTeamType && droppedTeamType !== "east" && droppedTeamType !== "west") {
-                        // console.log(team.short + " moving to slot: " + draggedTeamType);
                         // update team in target spot to the dragged team's old spot
                         team.type = draggedTeamType;
                     }
                     if (team.short === draggedTeamShort) {
-                        // console.log(team.short + " moving to slot: " + droppedTeamType);
-
                         // update the dragged team's type so it stays in the dropped slot
                         team.type = droppedTeamType;
                     }

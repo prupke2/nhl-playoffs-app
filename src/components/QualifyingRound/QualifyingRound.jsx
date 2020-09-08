@@ -33,9 +33,6 @@ export default class QualifyingRound extends Component {
 
         let saveQualifiers = this.props.saveQualifiers;
         saveQualifiers(this.state);
-        // console.log("state: " + JSON.stringify(this.state, null, 4))
-        // console.log("this.state.user: " + this.state.user);
-
     }
 
     render() {

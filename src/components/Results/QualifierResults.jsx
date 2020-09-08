@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 export default class QualifierResults extends Component {
 
   render() {
-		// console.log("props: " + JSON.stringify(this.props, null, 4))
 		if (this.props.userPicks !== null) {
 			return (
 				this.props.userPicks.map(

@@ -8,7 +8,6 @@ export default class SemiFinals extends Component {
 		super();
         this.state = SemiFinalData;
         this.teamSelectHandler = this.teamSelectHandler.bind(this);
-        // this.saveTeamsHandler = this.saveTeamsHandler.bind(this);
     }
 
     teamSelectHandler(teamShort, matchup) {
@@ -32,13 +31,9 @@ export default class SemiFinals extends Component {
 
         let saveConferenceSemiFinals = this.props.saveConferenceSemiFinals;
         saveConferenceSemiFinals(this.state);
-        // console.log("state: " + JSON.stringify(this.state, null, 4))
-        // console.log("this.state.user: " + this.state.user);
-
     }
 
     render() {
-
         return (
             <React.Fragment>
                 <div className="instructions">
@@ -57,7 +52,6 @@ export default class SemiFinals extends Component {
                     <div>
                         <h3 className="header align-left">west matchups</h3>
                         <h3 className="header align-left" id="east-matchups">east matchups</h3>
-
                         <ul className="matchups">
                             { 
                               React.Children.toArray(
@@ -69,11 +63,8 @@ export default class SemiFinals extends Component {
                             }
                         </ul>
                     </div>
-
                 </section>
-
             </React.Fragment>
         );
     }
-
 }
