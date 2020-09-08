@@ -272,13 +272,12 @@ class App extends Component {
         <Tabs defaultIndex={2}>
           <TabList>
             <div>
-              <Tab><div className="tab">Final 4</div></Tab>
               <Tab><div className="tab">Leaderboard</div></Tab>
               <Tab><div className="tab">Full Results</div></Tab>
             </div>
           </TabList>
-
-          <TabPanel>
+          
+          {/* <TabPanel>
             <h2>Final 4</h2>
             <MatchupInstructions 
             />
@@ -303,7 +302,7 @@ class App extends Component {
               saveStatus = {this.state.saveStatus}
               saveMessage = {this.state.saveMessage}
             /> 
-          </TabPanel>
+          </TabPanel> */}
           <TabPanel>
             <ul className="leaders">
               <Leaderboard 
